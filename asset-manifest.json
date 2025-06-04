@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/trentbreneman/static/css/main.39a6f8e9.css",
+    "main.js": "/trentbreneman/static/js/main.1f876c4e.js",
+    "static/js/453.bacdc159.chunk.js": "/trentbreneman/static/js/453.bacdc159.chunk.js",
+    "index.html": "/trentbreneman/index.html",
+    "main.39a6f8e9.css.map": "/trentbreneman/static/css/main.39a6f8e9.css.map",
+    "main.1f876c4e.js.map": "/trentbreneman/static/js/main.1f876c4e.js.map",
+    "453.bacdc159.chunk.js.map": "/trentbreneman/static/js/453.bacdc159.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.39a6f8e9.css",
+    "static/js/main.1f876c4e.js"
+  ]
+}
