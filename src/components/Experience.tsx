@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Experience.css';
 
 const Experience: React.FC = () => {
+  const experienceRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (experienceRef.current) {
+      observer.observe(experienceRef.current);
+    }
+
+    return () => {
+      if (experienceRef.current) {
+        observer.unobserve(experienceRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="experience-section">
+    <section id="experience" className={`experience-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={experienceRef}>
       <h2>EXPERIENCE</h2>
       <div className="experience-entry">
         <h3>Software Developer - iSolvRisk Inc.</h3>

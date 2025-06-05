@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useMemo, useEffect, useRef } from 'react';
 import './Projects.css';
 
 interface Project {
@@ -25,7 +25,7 @@ const projectsData: Project[] = [
       'Built a responsive React frontend that showcases the company\'s services, values, and contact information.',
       'Created a robust backend with Node.js and Express, handling API routes and business logic.',
       'Integrated PostgreSQL to manage business data, including client information and service offerings.',
-      'Implemented responsive design to ensure optimal user experience across devices.',
+      'Implemented responsive design to ensure optimal user experience across devices',
     ],
      liveLink: 'https://isolvrisk.com',
   },
@@ -47,11 +47,73 @@ const projectsData: Project[] = [
 ];
 
 const Projects: React.FC = () => {
+  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+  const projectsRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (projectsRef.current) {
+      observer.observe(projectsRef.current);
+    }
+
+    return () => {
+      if (projectsRef.current) {
+        observer.unobserve(projectsRef.current);
+      }
+    };
+  }, []);
+
+  const uniqueSkills = useMemo(() => {
+    const skills = new Set<string>();
+    projectsData.forEach(project => {
+      project.techStack.forEach(skill => skills.add(skill));
+    });
+    return Array.from(skills).sort();
+  }, []);
+
+  const filteredProjects = useMemo(() => {
+    if (!selectedSkill) {
+      return projectsData;
+    }
+    return projectsData.filter(project =>
+      project.techStack.includes(selectedSkill)
+    );
+  }, [selectedSkill]);
+
   return (
-    <section id="projects" className="projects-section">
+    <section id="projects" className={`projects-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={projectsRef}>
       <h2>PROJECTS</h2>
+      <div className="project-filter-buttons">
+        <button
+          onClick={() => setSelectedSkill(null)}
+          className={!selectedSkill ? 'active' : ''}
+          aria-pressed={!selectedSkill}
+        >
+          All
+        </button>
+        {uniqueSkills.map(skill => (
+          <button
+            key={skill}
+            onClick={() => setSelectedSkill(skill)}
+            className={selectedSkill === skill ? 'active' : ''}
+            aria-pressed={selectedSkill === skill}
+          >
+            {skill}
+          </button>
+        ))}
+      </div>
       <div className="projects-grid">
-        {projectsData.map((project) => (
+        {filteredProjects.map((project) => (
           <div key={project.id} className="project-card">
             <h3>{project.title}</h3>
             <p className="project-subtitle">{project.subtitle}</p>

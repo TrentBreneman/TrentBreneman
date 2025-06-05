@@ -1,9 +1,34 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './Education.css';
 
 const Education: React.FC = () => {
+  const educationRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (educationRef.current) {
+      observer.observe(educationRef.current);
+    }
+
+    return () => {
+      if (educationRef.current) {
+        observer.unobserve(educationRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="education-section">
+    <section id="education" className={`education-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={educationRef}>
       <h2>EDUCATION</h2>
       <div className="education-entry">
         <h3>Bachelor of Science in Computer Science - University of North Carolina at Charlotte</h3>

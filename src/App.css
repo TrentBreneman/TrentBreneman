@@ -62,6 +62,10 @@
   --project-link-hover-bg: var(--project-link-hover-bg-dark);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-body);
   color: var(--text-color-dark);

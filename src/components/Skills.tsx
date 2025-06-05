@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import './Skills.css';
 
 const skillsData = [
   {
@@ -20,8 +21,33 @@ const skillsData = [
 ];
 
 const Skills: React.FC = () => {
+  const skillsRef = useRef<HTMLElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (skillsRef.current) {
+      observer.observe(skillsRef.current);
+    }
+
+    return () => {
+      if (skillsRef.current) {
+        observer.unobserve(skillsRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section id="skills" className="skills-section">
+    <section id="skills" className={`skills-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={skillsRef}>
       <h2>MY SKILLS</h2>
       <div className="skills-grid">
         {skillsData.map((skillCategory, index) => (

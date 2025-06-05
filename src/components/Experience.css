@@ -3,46 +3,48 @@
   background-color: var(--section-bg);
   border-bottom: 1px solid var(--border-color);
   text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.experience-section.fade-in-slide-up {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .experience-section h2 {
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .experience-entry {
-  max-width: 900px;
-  margin: 0 auto 50px auto;
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 15px;
-  padding: 35px;
-  box-shadow: 0 6px 18px var(--card-shadow);
+  border-radius: 12px;
+  padding: 30px;
+  margin: 0 auto 30px auto;
+  max-width: 900px;
+  box-shadow: 0 6px 20px var(--card-shadow);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
-  position: relative;
 }
 
 .experience-entry:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px var(--card-hover-shadow);
-}
-
-.experience-entry:last-child {
-  margin-bottom: 0;
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px var(--card-hover-shadow);
 }
 
 .experience-entry h3 {
-  font-size: 2em;
+  font-size: 1.8em;
   color: var(--primary-color);
   margin-bottom: 8px;
 }
 
 .experience-dates {
-  font-size: 1.1em;
+  font-size: 1em;
   color: var(--text-color-dark);
-  margin-bottom: 25px;
-  font-weight: 600;
-  opacity: 0.9;
+  margin-bottom: 20px;
+  opacity: 0.8;
 }
 
 .experience-description {
@@ -52,21 +54,21 @@
 }
 
 .experience-description li {
-  font-size: 1.08em;
+  font-size: 1.05em;
   color: var(--text-color-dark);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   position: relative;
-  padding-left: 30px;
+  padding-left: 25px;
   line-height: 1.6;
 }
 
 .experience-description li::before {
-  content: '✨';
+  content: '➡️';
   position: absolute;
   left: 0;
   color: var(--primary-color);
-  font-size: 1.3em;
-  line-height: 1;
+  font-size: 0.9em;
+  line-height: 1.5;
 }
 
 [data-theme='dark'] .experience-dates,
@@ -80,11 +82,16 @@
   }
   .experience-entry {
     padding: 25px;
+    margin-bottom: 25px;
   }
   .experience-entry h3 {
-    font-size: 1.7em;
+    font-size: 1.6em;
+  }
+  .experience-dates {
+    font-size: 0.95em;
   }
   .experience-description li {
-    font-size: 1em;
+    font-size: 0.95em;
+    padding-left: 20px;
   }
 }

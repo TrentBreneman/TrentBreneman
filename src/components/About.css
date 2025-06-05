@@ -1,17 +1,19 @@
 .about-section {
   text-align: center;
   background-color: var(--about-bg);
-  padding: 80px 40px;
-  border-bottom: 1px solid var(--border-color);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.about-section h2 {
-  margin-bottom: 40px;
+.about-section.fade-in-slide-up {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .about-section p {
-  max-width: 900px;
-  margin: 0 auto 25px auto;
+  max-width: 800px;
+  margin: 0 auto 20px auto;
   font-size: 1.15em;
   line-height: 1.8;
   color: var(--text-color-dark);
@@ -22,9 +24,6 @@
 }
 
 @media (max-width: 768px) {
-  .about-section {
-    padding: 60px 20px;
-  }
   .about-section p {
     font-size: 1em;
   }
