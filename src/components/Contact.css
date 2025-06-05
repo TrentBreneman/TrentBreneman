@@ -1,0 +1,44 @@
+/* src/components/Contact.css */
+
+.contact-section {
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Space between contact links */
+  margin-top: 30px; /* Space from description paragraph */
+}
+
+.contact-link {
+  display: inline-block;
+  background-color: #3498db; /* Blue accent from App.css */
+  color: white;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.contact-link:hover {
+  background-color: #2980b9; /* Darker blue on hover */
+  transform: translateY(-2px); /* Slight lift */
+}
+
+/* Responsive adjustments for contact links */
+@media (max-width: 768px) {
+  .contact-links {
+    flex-direction: column; /* Stack links vertically on small screens */
+    align-items: center;
+  }
+  .contact-link {
+    width: 80%; /* Make links take more width on small screens */
+    max-width: 250px; /* Limit max width */
+  }
+}

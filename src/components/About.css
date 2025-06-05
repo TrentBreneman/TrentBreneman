@@ -1,0 +1,15 @@
+.about-section {
+  text-align: center;
+  background-color: #fcfcfc;
+}
+
+.about-section p {
+  max-width: 800px;
+  margin: 0 auto 20px auto;
+}
+
+@media (max-width: 768px) {
+  .about-section p {
+    font-size: 1em;
+  }
+}

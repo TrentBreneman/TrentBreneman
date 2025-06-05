@@ -14,7 +14,6 @@ interface Project {
   githubLink?: string;
 }
 
-// Dummy data for projects - you can expand this with more details like images, extended descriptions
 const projectsData: Project[] = [
   {
     id: 'business-homepage',
@@ -29,8 +28,7 @@ const projectsData: Project[] = [
       'Integrated PostgreSQL to manage business data, including client information and service offerings.',
       'Implemented responsive design to ensure optimal user experience across devices.',
     ],
-    // liveLink: 'https://example.com/business-homepage', // Add actual links
-    // githubLink: 'https://github.com/TrentBreneman/business-homepage',
+     liveLink: 'https://isolvrisk.com', 
   },
   {
     id: 'rumble-quiz',
@@ -47,8 +45,6 @@ const projectsData: Project[] = [
       'Implemented real-time features to synchronize game states and display live results during quiz sessions.',
       'Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.',
     ],
-    // liveLink: 'https://example.com/rumble-quiz', // Add actual links
-    // githubLink: 'https://github.com/TrentBreneman/rumble-quiz',
   },
   // Add more projects here following the same structure
 ];
@@ -83,8 +79,7 @@ const Projects: React.FC = () => {
                   GitHub
                 </a>
               )}
-            </div>
-            {/* You could add a "View Details" button here later to open a modal or new page */}
+            </div>            
           </div>
         ))}
       </div>

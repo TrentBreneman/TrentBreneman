@@ -1,23 +1,22 @@
-// src/components/About.tsx
 import React from 'react';
+import './About.css';
 
 const About: React.FC = () => {
   return (
-    <section id="about">
+    <section id="about" className="about-section">
       <h2>ABOUT ME</h2>
       <p>
-        I am a versatile full-stack web developer with hands-on experience building and deploying robust applications using technologies such as React, Node.js, Express, SQL, and JavaScript.
-        I am skilled in designing intuitive user interfaces, developing efficient backends, and integrating databases for real-world applications.
-        I have a proven ability to work on team-based projects and independently deliver results.
-        I am passionate about learning new technologies and solving challenging problems in web development.
-      </p>
-      {/* You can expand on this: */}
-      {/* <p>
-        My journey into web development began when... (share your story!)
+        Hi, I'm Trent Breneman! I'm a passionate Full Stack Developer with a knack for building robust and scalable web applications. My journey into tech started with **The Odin Project** and then as an intern at **iSolvRisk**.
       </p>
       <p>
-        I thrive on creating solutions that are not only functional but also provide an exceptional user experience.
-      </p> */}
+        I specialize in **React, Node.js, TypeScript, and PostgreSQL**, and love tackling complex problems to deliver clean, efficient, and user-friendly solutions. I'm always eager to learn new technologies and improve my skills.
+      </p>
+      <p>
+        Outside of coding, you can find me enjoying **music, traveling**, and more. I believe a balanced life fuels creativity and problem-solving.
+      </p>
+      <p>
+        Feel free to explore my work in the projects section, or get in touch if you'd like to connect!
+      </p>
     </section>
   );
 };
