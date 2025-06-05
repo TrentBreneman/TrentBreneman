@@ -10,6 +10,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
 import NotFoundPage from './components/NotFoundPage';
+import CustomCursor from './components/CustomCursor'; // 
 
 import './index.css';
 import './App.css';
@@ -34,6 +35,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
+        <CustomCursor />
         <Header toggleTheme={toggleTheme} currentTheme={theme} />
         <Routes>
           <Route path="/" element={

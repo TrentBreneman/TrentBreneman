@@ -1,0 +1,38 @@
+body {
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  background-color: var(--primary-color);
+  border-radius: 50%;
+  opacity: 0.7;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: transform 0.1s ease-out, width 0.1s ease-out, height 0.1s ease-out, opacity 0.1s ease-out;
+}
+
+/* Optional: Add hover effects for interactive elements */
+a:hover + .custom-cursor,
+button:hover + .custom-cursor,
+.project-card:hover + .custom-cursor,
+.skill-chip:hover + .custom-cursor {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0.9;
+  width: 35px;
+  height: 35px;
+}
+
+input:hover + .custom-cursor,
+textarea:hover + .custom-cursor {
+  width: 5px;
+  height: 30px;
+  border-radius: 5px;
+  transform: translate(-50%, -50%) scaleX(2);
+  opacity: 0.9;
+}
