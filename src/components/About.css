@@ -1,6 +1,6 @@
 .about-section {
   text-align: center;
-  background-color: #fcfcfc;
+  background-color: var(--about-bg);
 }
 
 .about-section p {
