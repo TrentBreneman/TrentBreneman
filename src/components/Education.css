@@ -1,0 +1,84 @@
+.education-section {
+  padding: 80px 40px;
+  background-color: var(--about-bg);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+.education-section h2 {
+  margin-bottom: 60px;
+}
+
+.education-entry {
+  max-width: 900px;
+  margin: 0 auto 40px auto; /* Space between entries */
+  background-color: var(--card-bg); /* Use card background */
+  border: 1px solid var(--card-border);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 15px var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+  overflow: hidden; /* For pseudo-elements */
+}
+
+.education-entry:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px var(--card-hover-shadow);
+}
+
+.education-entry h3 {
+  font-size: 1.8em;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.education-dates {
+  font-size: 1em;
+  color: var(--text-color-dark);
+  margin-bottom: 20px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+.education-description {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.education-description li {
+  font-size: 1.05em;
+  color: var(--text-color-dark);
+  margin-bottom: 10px;
+  position: relative; /* Needed for ::before positioning */
+  padding-left: 25px;
+}
+/* Custom bullet point */
+.education-description li::before {
+  content: '📚'; /* Custom emoji bullet */
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-size: 1.2em;
+  line-height: 1;
+}
+
+[data-theme='dark'] .education-dates,
+[data-theme='dark'] .education-description li {
+  color: var(--text-color-light);
+}
+
+@media (max-width: 768px) {
+  .education-section {
+    padding: 60px 20px;
+  }
+  .education-entry {
+    padding: 25px;
+  }
+  .education-entry h3 {
+    font-size: 1.5em;
+  }
+  .education-description li {
+    font-size: 0.95em;
+  }
+}

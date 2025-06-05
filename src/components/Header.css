@@ -1,29 +1,168 @@
-.main-header {
+.header-section {
   text-align: center;
-  padding: 20px 0;
-  background-color: var(--section-bg);
-  border-bottom: 1px solid var(--border-color);
+  padding: 100px 40px; /* More vertical padding */
+  background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
+  color: var(--header-text-color);
+  position: relative;
+  overflow: hidden;
+  border-bottom-left-radius: 25px; /* More pronounced border radius */
+  border-bottom-right-radius: 25px;
+  min-height: 60vh; /* Slightly taller */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 30px var(--header-shadow); /* Add a subtle shadow */
+}
+
+.header-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Keep your SVG pattern */
+  background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23ffffff" opacity="0.15"><circle cx="25" cy="25" r="3" /><circle cx="75" cy="75" r="3" /><circle cx="75" cy="25" r="3" /><circle cx="25" cy="75" r="3" /></g></svg>')
+    repeat;
+  background-size: 40px; /* Slightly larger pattern */
+  opacity: 0.2; /* Softer opacity */
+  pointer-events: none;
+}
+
+.header-title {
+  font-size: 5.5em; /* Larger, more impactful */
   margin-bottom: 20px;
+  color: var(--header-text-color);
+  text-shadow: 3px 3px 6px var(--header-shadow); /* Stronger shadow */
+  line-height: 1.1;
+  letter-spacing: -1px; /* Slightly tighter letter spacing */
 }
 
-.main-header h1 {
-  font-size: 2.5em;
-  color: var(--heading-color);
-  margin-bottom: 10px;
+.header-tagline {
+  font-size: 1.7em; /* Slightly larger */
+  max-width: 900px;
+  margin: 25px auto 45px auto;
+  line-height: 1.8;
+  opacity: 0.95;
+  min-height: 2.2em; /* Ensure consistent height */
+  font-weight: 300;
 }
 
-.contact-info {
-  font-size: 0.9em;
-  color: var(--text-color);
-  line-height: 1.5;
+.typing-cursor {
+  animation: blink 0.7s infinite cubic-bezier(1, 0, 0, 1); /* Smoother blink */
 }
 
-.contact-info a {
-  color: var(--link-color);
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.header-social-links {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 30px; /* More space between icons */
+}
+
+.header-social-links a {
+  color: var(--header-link-color);
+  font-size: 3em; /* Larger icons */
+  transition: color 0.3s ease-in-out, transform 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce effect */
   text-decoration: none;
 }
 
-.contact-info a:hover {
-  text-decoration: underline;
-  color: var(--link-hover-color);
+.header-social-links a:hover {
+  color: var(--header-link-hover-color);
+  transform: translateY(-8px) scale(1.1); /* Lift and grow on hover */
+}
+
+.header-call-to-action {
+  font-size: 1.6em; /* More prominent */
+  font-weight: 700; /* Bolder */
+  color: var(--primary-color); /* Use primary accent color */
+  margin-top: 30px;
+  text-shadow: 1px 1px 3px var(--header-shadow);
+}
+
+.theme-toggle-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.theme-toggle-button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--header-text-color);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  backdrop-filter: blur(5px); /* Frosted glass effect */
+}
+
+.theme-toggle-button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .header-title {
+    font-size: 4em;
+  }
+  .header-tagline {
+    font-size: 1.5em;
+  }
+  .header-social-links a {
+    font-size: 2.5em;
+  }
+  .header-call-to-action {
+    font-size: 1.3em;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-section {
+    padding: 80px 20px;
+  }
+  .header-title {
+    font-size: 3.5em;
+  }
+  .header-tagline {
+    font-size: 1.2em;
+    margin: 20px auto 35px auto;
+  }
+  .header-social-links a {
+    font-size: 2.2em;
+  }
+  .header-call-to-action {
+    font-size: 1.1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-section {
+    padding: 60px 15px;
+  }
+  .header-title {
+    font-size: 2.8em;
+  }
+  .header-tagline {
+    font-size: 1em;
+  }
+  .header-social-links {
+    gap: 20px;
+  }
+  .header-social-links a {
+    font-size: 1.8em;
+  }
+  .header-call-to-action {
+    font-size: 1em;
+  }
 }

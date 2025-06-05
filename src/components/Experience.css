@@ -1,0 +1,93 @@
+.experience-section {
+  padding: 80px 40px;
+  background-color: var(--section-bg);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.experience-section h2 {
+      margin-bottom: 60px;
+
+}
+
+.experience-entry {
+  max-width: 900px;
+  margin: 0 auto 50px auto; 
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  padding: 35px; 
+  box-shadow: 0 6px 18px var(--card-shadow);
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
+  text-align: left;
+  position: relative;
+}
+
+.experience-entry:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px var(--card-hover-shadow);
+}
+
+.experience-entry:last-child {
+  margin-bottom: 0;
+}
+
+.experience-entry h3 {
+  font-size: 1.8em;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.experience-dates {
+  font-size: 1.1em;
+  color: var(--text-color-dark);
+  margin-bottom: 25px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.experience-description {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-description li {
+  font-size: 1.08em;
+  color: var(--text-color-dark);
+  margin-bottom: 12px;
+  position: relative; /* Needed for the ::before pseudo-element */
+  padding-left: 30px; /* Space for custom bullet */
+  line-height: 1.6;
+}
+
+.experience-description li::before {
+  content: '✨'; /* Custom emoji bullet */
+  position: absolute;
+  left: 0;
+  color: var(--primary-color);
+  font-size: 1.3em;
+  line-height: 1;
+}
+
+[data-theme='dark'] .experience-dates,
+[data-theme='dark'] .experience-description li {
+  color: var(--text-color-light);
+}
+
+@media (max-width: 768px) {
+  .experience-section {
+    padding: 60px 20px;
+  }
+  .experience-entry {
+    padding: 25px;
+  }
+  .experience-entry h3 {
+    font-size: 1.7em;
+  }
+  .experience-description li {
+    font-size: 1em;
+  }
+}

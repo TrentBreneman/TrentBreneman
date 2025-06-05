@@ -10,6 +10,11 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './App.css';
 
+import '@fortawesome/fontawesome-svg-core/styles.css'; 
+
+import { config } from '@fortawesome/fontawesome-svg-core';
+config.autoAddCss = false;
+
 const App: React.FC = () => {
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
 

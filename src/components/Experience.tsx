@@ -1,8 +1,9 @@
 import React from 'react';
+import './Education.css'; 
 
 const Experience: React.FC = () => {
   return (
-    <section className="experience-section"> 
+    <section className="experience-section">
       <h2>EXPERIENCE</h2>
       <div className="experience-entry">
         <h3>Software Developer - iSolvRisk Inc.</h3>
@@ -20,8 +21,8 @@ const Experience: React.FC = () => {
 
       <div className="experience-entry">
         <h3>Assistant Kitchen Manager - Charbar 7</h3>
-        <p className="experience-dates">October 2018 - October 2021 | Charlotte, NC</p> 
-        <ul className="experience-description"> 
+        <p className="experience-dates">October 2018 - October 2021 | Charlotte, NC</p>
+        <ul className="experience-description">
           <li>Managed daily kitchen operations, including staff scheduling and inventory management. </li>
           <li>Trained and mentored kitchen staff to ensure consistency in food preparation and quality. </li>
           <li>Oversaw food safety and sanitation compliance in adherence to local health regulations. </li>

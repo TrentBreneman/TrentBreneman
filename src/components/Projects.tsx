@@ -1,7 +1,6 @@
-// src/components/Projects.tsx
 import React from 'react';
+import './Education.css'; 
 
-// Define a type for your project data
 interface Project {
   id: string;
   title: string;
@@ -28,7 +27,7 @@ const projectsData: Project[] = [
       'Integrated PostgreSQL to manage business data, including client information and service offerings.',
       'Implemented responsive design to ensure optimal user experience across devices.',
     ],
-     liveLink: 'https://isolvrisk.com', 
+     liveLink: 'https://isolvrisk.com',
   },
   {
     id: 'rumble-quiz',
@@ -36,13 +35,12 @@ const projectsData: Project[] = [
     subtitle: 'MySQL, TypeScript, Node.js, React',
     date: 'February 2025 - Present',
     description: 'A dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning.',
-    techStack: ['MySQL', 'TypeScript', 'Node.js', 'React', 'Socket.IO', 'Express.js'],
+    techStack: ['MySQL', 'TypeScript', 'Node.js', 'Express.js', 'React', 'Socket.io', 'CSS'],
     features: [
-      'Engineered a dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning.',
-      'Designed and implemented a robust data model and managed quiz content using MySQL for efficient storage and retrieval.',
-      'Developed scalable backend APIs with Node.js and TypeScript, ensuring type safety and maintainability.',
-      'Built a responsive and intuitive user interface using React, providing a seamless experience for both quiz hosts and participants.',
-      'Implemented real-time features to synchronize game states and display live results during quiz sessions.',
+      'Developed a real-time quiz engine using Socket.io, facilitating instant question delivery and answer processing for multiple players.',
+      'Designed and implemented a robust backend with Node.js and Express, integrated with MySQL for efficient data management.',
+      'Created an intuitive and responsive React frontend, allowing users to host, join, and participate in quizzes seamlessly.',
+      'Incorporated features for creating custom quizzes, tracking scores, and displaying leaderboards to enhance the competitive experience.',
       'Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.',
     ],
   },
@@ -78,7 +76,7 @@ const Projects: React.FC = () => {
                   GitHub
                 </a>
               )}
-            </div>            
+            </div>
           </div>
         ))}
       </div>
