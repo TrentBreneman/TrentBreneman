@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/TrentBreneman/static/css/main.b8f69260.css",
-    "main.js": "/TrentBreneman/static/js/main.23708d9e.js",
+    "main.css": "/TrentBreneman/static/css/main.c75a3225.css",
+    "main.js": "/TrentBreneman/static/js/main.35aff84a.js",
     "static/js/453.bacdc159.chunk.js": "/TrentBreneman/static/js/453.bacdc159.chunk.js",
     "index.html": "/TrentBreneman/index.html",
-    "main.b8f69260.css.map": "/TrentBreneman/static/css/main.b8f69260.css.map",
-    "main.23708d9e.js.map": "/TrentBreneman/static/js/main.23708d9e.js.map",
+    "main.c75a3225.css.map": "/TrentBreneman/static/css/main.c75a3225.css.map",
+    "main.35aff84a.js.map": "/TrentBreneman/static/js/main.35aff84a.js.map",
     "453.bacdc159.chunk.js.map": "/TrentBreneman/static/js/453.bacdc159.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b8f69260.css",
-    "static/js/main.23708d9e.js"
+    "static/css/main.c75a3225.css",
+    "static/js/main.35aff84a.js"
   ]
 }
