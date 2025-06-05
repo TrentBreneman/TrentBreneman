@@ -34,7 +34,7 @@ const projectsData: Project[] = [
     id: 'rumble-quiz',
     title: 'Rumble | Interactive Quiz Platform',
     subtitle: 'MySQL, TypeScript, Node.js, React',
-    date: 'February 2025 - May 2025',
+    date: 'February 2025 - Present',
     description: 'A dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning.',
     techStack: ['MySQL', 'TypeScript', 'Node.js', 'React', 'Socket.IO', 'Express.js'],
     features: [
@@ -46,7 +46,6 @@ const projectsData: Project[] = [
       'Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.',
     ],
   },
-  // Add more projects here following the same structure
 ];
 
 const Projects: React.FC = () => {
