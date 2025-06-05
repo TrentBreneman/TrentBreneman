@@ -1,46 +1,92 @@
 // src/components/Projects.tsx
 import React from 'react';
 
+// Define a type for your project data
+interface Project {
+  id: string;
+  title: string;
+  subtitle: string;
+  date: string;
+  description: string;
+  techStack: string[];
+  features: string[];
+  liveLink?: string;
+  githubLink?: string;
+}
+
+// Dummy data for projects - you can expand this with more details like images, extended descriptions
+const projectsData: Project[] = [
+  {
+    id: 'business-homepage',
+    title: 'Business Homepage',
+    subtitle: 'PERN Stack (PostgreSQL, Express, React, Node.js)',
+    date: 'October 2024 - Present',
+    description: 'A fully functional business homepage providing users with an interactive and informative experience.',
+    techStack: ['PostgreSQL', 'Express.js', 'React', 'Node.js', 'TypeScript', 'CSS'],
+    features: [
+      'Built a responsive React frontend that showcases the company\'s services, values, and contact information.',
+      'Created a robust backend with Node.js and Express, handling API routes and business logic.',
+      'Integrated PostgreSQL to manage business data, including client information and service offerings.',
+      'Implemented responsive design to ensure optimal user experience across devices.',
+    ],
+    // liveLink: 'https://example.com/business-homepage', // Add actual links
+    // githubLink: 'https://github.com/TrentBreneman/business-homepage',
+  },
+  {
+    id: 'rumble-quiz',
+    title: 'Rumble | Interactive Quiz Platform',
+    subtitle: 'MySQL, TypeScript, Node.js, React',
+    date: 'February 2025 - May 2025',
+    description: 'A dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning.',
+    techStack: ['MySQL', 'TypeScript', 'Node.js', 'React', 'Socket.IO', 'Express.js'],
+    features: [
+      'Engineered a dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning.',
+      'Designed and implemented a robust data model and managed quiz content using MySQL for efficient storage and retrieval.',
+      'Developed scalable backend APIs with Node.js and TypeScript, ensuring type safety and maintainability.',
+      'Built a responsive and intuitive user interface using React, providing a seamless experience for both quiz hosts and participants.',
+      'Implemented real-time features to synchronize game states and display live results during quiz sessions.',
+      'Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.',
+    ],
+    // liveLink: 'https://example.com/rumble-quiz', // Add actual links
+    // githubLink: 'https://github.com/TrentBreneman/rumble-quiz',
+  },
+  // Add more projects here following the same structure
+];
+
 const Projects: React.FC = () => {
   return (
-    <section className="projects-section"> {/* Add projects-section class */}
+    <section id="projects">
       <h2>PROJECTS</h2>
-
-      <div className="project-card"> {/* Wrap each project in a card */}
-        <h3>Business Homepage | PERN Stack (PostgreSQL, Express, React, Node.js)</h3>
-        <p className="project-duration">October 2024 - Present</p> {/* Add duration class */}
-        <ul className="project-description"> {/* Apply description class to ul for consistent styling */}
-          <li>Developed a fully functional business homepage using the PERN stack to provide users with an interactive and informative experience.</li>
-          <li>Built a responsive React frontend that showcases the company's services, values, and contact information.</li>
-          <li>Created a robust backend with Node.js and Express, handling API routes and business logic.</li>
-          <li>Integrated PostgreSQL to manage business data, including client information and service offerings.</li>
-          <li>Implemented responsive design to ensure optimal user experience across devices.</li>
-        </ul>
-        <div className="project-links"> {/* Group links */}
-          {/* Add relevant links here. Example: */}
-          <a href="#" target="_blank" rel="noopener noreferrer">View Live</a>
-          <a href="#" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-        </div>
-      </div>
-
-      {/* Remove the <br /> between projects, the margin on project-card will handle spacing */}
-
-      <div className="project-card"> {/* Wrap each project in a card */}
-        <h3>Rumble | Interactive Quiz Platform (MySQL, TypeScript, Node.js, React)</h3>
-        <p className="project-duration">February 2025 - May 2025</p> {/* Add duration class */}
-        <ul className="project-description"> {/* Apply description class to ul for consistent styling */}
-          <li>Engineered a dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning.</li>
-          <li>Designed and implemented a robust data model and managed quiz content using **MySQL** for efficient storage and retrieval.</li>
-          <li>Developed scalable backend APIs with **Node.js** and **TypeScript**, ensuring type safety and maintainability.</li>
-          <li>Built a responsive and intuitive user interface using **React**, providing a seamless experience for both quiz hosts and participants.</li>
-          <li>Implemented real-time features to synchronize game states and display live results during quiz sessions.</li>
-          <li>Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.</li>
-        </ul>
-        <div className="project-links"> {/* Group links */}
-          {/* Add relevant links here. Example: */}
-          <a href="#" target="_blank" rel="noopener noreferrer">View Live</a>
-          <a href="#" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-        </div>
+      <div className="projects-grid">
+        {projectsData.map((project) => (
+          <div key={project.id} className="project-card">
+            <h3>{project.title}</h3>
+            <p className="project-subtitle">{project.subtitle}</p>
+            <p className="project-date">{project.date}</p>
+            <p className="project-description">{project.description}</p>
+            <div className="project-tech-stack">
+              <strong>Tech Stack:</strong> {project.techStack.join(', ')}
+            </div>
+            <ul className="project-features">
+              {project.features.map((feature, index) => (
+                <li key={index}>{feature}</li>
+              ))}
+            </ul>
+            <div className="project-links">
+              {project.liveLink && (
+                <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                  Live Demo
+                </a>
+              )}
+              {project.githubLink && (
+                <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                  GitHub
+                </a>
+              )}
+            </div>
+            {/* You could add a "View Details" button here later to open a modal or new page */}
+          </div>
+        ))}
       </div>
     </section>
   );
