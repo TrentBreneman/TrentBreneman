@@ -3,6 +3,9 @@
   --secondary-color: #6c757d;
   --accent-color: #00bcd4;
 
+  --scrollbar-thumb-color: var(--primary-color);
+  --scrollbar-thumb-hover-color: var(--project-link-hover-bg);
+
   /* Light Theme */
   --header-bg-start-light: #f0f8ff;
   --header-bg-end-light: #e0f2f7;
@@ -152,7 +155,6 @@
   --footer-text: var(--footer-text-dark);
 }
 
-/* Custom Text Selection Styling */
 ::selection {
   background: var(--accent-color);
   color: #ffffff;
@@ -163,29 +165,40 @@
   color: #ffffff;
 }
 
-/* Custom Scrollbar Styling */
 ::-webkit-scrollbar {
   width: 12px;
+  height: 12px;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
-  background: color-mix(in srgb, var(--section-bg) 80%, transparent);
-  background: rgba(0, 0, 0, 0.1);
-
+  background: transparent;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary-color);
+  background: var(--scrollbar-thumb-color);
   border-radius: 10px;
-  border: 3px solid rgba(0, 0, 0, 0.05); 
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--project-link-hover-bg);
+  background: var(--scrollbar-thumb-hover-color);
 }
 
+body.scrolling ::-webkit-scrollbar-thumb {
+  opacity: 1;
+}
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-color) transparent;
+  overscroll-behavior: contain;
+}
 
 body {
   margin: 0;
@@ -209,10 +222,6 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, h5, h6 {
