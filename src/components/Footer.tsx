@@ -1,16 +1,36 @@
 import React from 'react';
 import './Footer.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="footer-section">
-      <p>&copy; {currentYear} Trent Breneman. All rights reserved.</p>
-      <div className="footer-links">
-        <a href="https://github.com/TrentBreneman" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <div className="footer-content">
+        <p className="footer-copyright">&copy; {currentYear} Trent Breneman. All rights reserved.</p>
+        <div className="footer-links">
+          <a
+            href="https://github.com/TrentBreneman"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            className="footer-icon-link"
+          >
+            <FontAwesomeIcon icon={faGithub} />
+          </a>
+          <a
+            href="https://linkedin.com/in/TrentBreneman"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            className="footer-icon-link"
+          >
+            <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+        </div>
+        <p className="footer-built-with">Built with React, TypeScript, and Vite.</p>
       </div>
-      <p>Built with React, TypeScript, and Vite.</p>
     </footer>
   );
 };
