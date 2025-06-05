@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import About from './components/About';
 import Experience from './components/Experience';
@@ -8,9 +9,12 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import BackToTopButton from './components/BackToTopButton';
+import NotFoundPage from './components/NotFoundPage';
+
+import './index.css';
 import './App.css';
 
-import '@fortawesome/fontawesome-svg-core/styles.css'; 
+import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 config.autoAddCss = false;
@@ -28,19 +32,26 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App">
-      <Header toggleTheme={toggleTheme} currentTheme={theme} /> 
-      <main>
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Education />
-        <Contact />
-        <BackToTopButton />
-      </main>
-      <Footer />
-    </div>
+    <Router>
+      <div className="App">
+        <Header toggleTheme={toggleTheme} currentTheme={theme} />
+        <Routes>
+          <Route path="/" element={
+            <main>
+              <About />
+              <Experience />
+              <Projects />
+              <Skills />
+              <Education />
+              <Contact />
+              <BackToTopButton />
+            </main>
+          } />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 };
 

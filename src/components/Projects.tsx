@@ -1,5 +1,6 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import './Projects.css';
+import ImageCarousel from './ImageCarousel'; // Import the new ImageCarousel component
 
 interface Project {
   id: string;
@@ -11,6 +12,7 @@ interface Project {
   features: string[];
   liveLink?: string;
   githubLink?: string;
+  images?: string[]; // Added for carousel
 }
 
 const projectsData: Project[] = [
@@ -28,6 +30,7 @@ const projectsData: Project[] = [
       'Implemented responsive design to ensure optimal user experience across devices',
     ],
      liveLink: 'https://isolvrisk.com',
+     images: ['/images/business-homepage-1.jpg', '/images/business-homepage-2.jpg'], // Placeholder images
   },
   {
     id: 'rumble-quiz',
@@ -43,6 +46,7 @@ const projectsData: Project[] = [
       'Incorporated features for creating custom quizzes, tracking scores, and displaying leaderboards to enhance the competitive experience.',
       'Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.',
     ],
+    images: ['/images/rumble-quiz-1.jpg', '/images/rumble-quiz-2.jpg', '/images/rumble-quiz-3.jpg'], // Placeholder images
   },
 ];
 
@@ -115,6 +119,10 @@ const Projects: React.FC = () => {
       <div className="projects-grid">
         {filteredProjects.map((project) => (
           <div key={project.id} className="project-card">
+            {/* Integrate the ImageCarousel component here */}
+            {project.images && project.images.length > 0 && (
+              <ImageCarousel images={project.images} title={project.title} />
+            )}
             <h3>{project.title}</h3>
             <p className="project-subtitle">{project.subtitle}</p>
             <p className="project-date">{project.date}</p>
