@@ -6,21 +6,18 @@
 }
 
 .experience-section h2 {
-      margin-bottom: 60px;
-
+  margin-bottom: 60px;
 }
 
 .experience-entry {
   max-width: 900px;
-  margin: 0 auto 50px auto; 
+  margin: 0 auto 50px auto;
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
-  border-radius: 8px;
-  padding: 35px; 
+  border-radius: 15px;
+  padding: 35px;
   box-shadow: 0 6px 18px var(--card-shadow);
-  transition:
-    transform 0.2s ease-in-out,
-    box-shadow 0.2s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
   position: relative;
 }
@@ -35,7 +32,7 @@
 }
 
 .experience-entry h3 {
-  font-size: 1.8em;
+  font-size: 2em;
   color: var(--primary-color);
   margin-bottom: 8px;
 }
@@ -58,13 +55,13 @@
   font-size: 1.08em;
   color: var(--text-color-dark);
   margin-bottom: 12px;
-  position: relative; /* Needed for the ::before pseudo-element */
-  padding-left: 30px; /* Space for custom bullet */
+  position: relative;
+  padding-left: 30px;
   line-height: 1.6;
 }
 
 .experience-description li::before {
-  content: '✨'; /* Custom emoji bullet */
+  content: '✨';
   position: absolute;
   left: 0;
   color: var(--primary-color);

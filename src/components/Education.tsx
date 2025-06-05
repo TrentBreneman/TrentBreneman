@@ -1,5 +1,5 @@
 import React from 'react';
-import './Education.css'; 
+import './Education.css';
 
 const Education: React.FC = () => {
   return (

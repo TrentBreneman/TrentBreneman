@@ -1,18 +1,18 @@
 .header-section {
   text-align: center;
-  padding: 100px 40px; /* More vertical padding */
+  padding: 100px 40px;
   background: linear-gradient(135deg, var(--header-bg-start) 0%, var(--header-bg-end) 100%);
   color: var(--header-text-color);
   position: relative;
   overflow: hidden;
-  border-bottom-left-radius: 25px; /* More pronounced border radius */
+  border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-  min-height: 60vh; /* Slightly taller */
+  min-height: 60vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 10px 30px var(--header-shadow); /* Add a subtle shadow */
+  box-shadow: 0 10px 30px var(--header-shadow);
 }
 
 .header-section::before {
@@ -22,35 +22,34 @@
   left: 0;
   right: 0;
   bottom: 0;
-  /* Keep your SVG pattern */
   background: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23ffffff" opacity="0.15"><circle cx="25" cy="25" r="3" /><circle cx="75" cy="75" r="3" /><circle cx="75" cy="25" r="3" /><circle cx="25" cy="75" r="3" /></g></svg>')
     repeat;
-  background-size: 40px; /* Slightly larger pattern */
-  opacity: 0.2; /* Softer opacity */
+  background-size: 40px;
+  opacity: 0.2;
   pointer-events: none;
 }
 
 .header-title {
-  font-size: 5.5em; /* Larger, more impactful */
+  font-size: 5.5em;
   margin-bottom: 20px;
   color: var(--header-text-color);
-  text-shadow: 3px 3px 6px var(--header-shadow); /* Stronger shadow */
+  text-shadow: 3px 3px 6px var(--header-shadow);
   line-height: 1.1;
-  letter-spacing: -1px; /* Slightly tighter letter spacing */
+  letter-spacing: -1px;
 }
 
 .header-tagline {
-  font-size: 1.7em; /* Slightly larger */
+  font-size: 1.7em;
   max-width: 900px;
   margin: 25px auto 45px auto;
   line-height: 1.8;
   opacity: 0.95;
-  min-height: 2.2em; /* Ensure consistent height */
+  min-height: 2.2em;
   font-weight: 300;
 }
 
 .typing-cursor {
-  animation: blink 0.7s infinite cubic-bezier(1, 0, 0, 1); /* Smoother blink */
+  animation: blink 0.7s infinite cubic-bezier(1, 0, 0, 1);
 }
 
 @keyframes blink {
@@ -63,25 +62,25 @@
   margin-bottom: 40px;
   display: flex;
   justify-content: center;
-  gap: 30px; /* More space between icons */
+  gap: 30px;
 }
 
 .header-social-links a {
   color: var(--header-link-color);
-  font-size: 3em; /* Larger icons */
-  transition: color 0.3s ease-in-out, transform 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce effect */
+  font-size: 3em;
+  transition: color 0.3s ease-in-out, transform 0.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   text-decoration: none;
 }
 
 .header-social-links a:hover {
   color: var(--header-link-hover-color);
-  transform: translateY(-8px) scale(1.1); /* Lift and grow on hover */
+  transform: translateY(-8px) scale(1.1);
 }
 
 .header-call-to-action {
-  font-size: 1.6em; /* More prominent */
-  font-weight: 700; /* Bolder */
-  color: var(--primary-color); /* Use primary accent color */
+  font-size: 1.6em;
+  font-weight: 700;
+  color: var(--primary-color);
   margin-top: 30px;
   text-shadow: 1px 1px 3px var(--header-shadow);
 }
@@ -103,7 +102,7 @@
   font-size: 1em;
   font-weight: 600;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-  backdrop-filter: blur(5px); /* Frosted glass effect */
+  backdrop-filter: blur(5px);
 }
 
 .theme-toggle-button:hover {
@@ -111,7 +110,6 @@
   transform: translateY(-2px);
 }
 
-/* Responsive adjustments */
 @media (max-width: 900px) {
   .header-title {
     font-size: 4em;

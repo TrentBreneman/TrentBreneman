@@ -1,5 +1,5 @@
 import React from 'react';
-import './Education.css'; 
+import './Projects.css';
 
 interface Project {
   id: string;
@@ -48,7 +48,7 @@ const projectsData: Project[] = [
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects">
+    <section id="projects" className="projects-section">
       <h2>PROJECTS</h2>
       <div className="projects-grid">
         {projectsData.map((project) => (

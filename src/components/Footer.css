@@ -1,10 +1,10 @@
 .footer-section {
-  background-color: var(--secondary-color); 
-  color: var(--text-color-light); 
+  background-color: var(--secondary-color);
+  color: var(--text-color-light);
   padding: 40px 20px;
   text-align: center;
   font-size: 0.9em;
-  border-top-left-radius: 15px; 
+  border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
 
@@ -28,18 +28,18 @@
 
 .footer-icon-link {
   color: var(--text-color-light);
-  font-size: 1.8em; 
+  font-size: 1.8em;
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .footer-icon-link:hover {
-  color: var(--primary-color); 
+  color: var(--primary-color);
   transform: translateY(-3px) scale(1.1);
 }
 
 .footer-built-with {
   font-weight: 600;
-  color: var(--primary-color); 
+  color: var(--primary-color);
 }
 
 @media (max-width: 768px) {

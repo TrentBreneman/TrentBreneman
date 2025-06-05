@@ -1,6 +1,6 @@
 .about-section {
   text-align: center;
-  background-color: var(--about-bg); 
+  background-color: var(--about-bg);
   padding: 80px 40px;
   border-bottom: 1px solid var(--border-color);
 }
@@ -10,13 +10,12 @@
 }
 
 .about-section p {
-  max-width: 900px; 
+  max-width: 900px;
   margin: 0 auto 25px auto;
-  font-size: 1.15em; 
-  line-height: 1.8; 
-  color: var(--text-color-dark); 
+  font-size: 1.15em;
+  line-height: 1.8;
+  color: var(--text-color-dark);
 }
-
 
 [data-theme='dark'] .about-section p {
   color: var(--text-color-light);
