@@ -16,7 +16,7 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, currentTheme }) => {
       </div>
       <h1 className="header-title">Trent Breneman</h1>
       <p className="header-tagline">
-        Versatile full-stack web developer with hands-on experience building and deploying robust applications. [cite: 1]
+        Versatile full-stack web developer with hands-on experience building and deploying robust applications.
       </p>
       <p className="header-contact">
         704-443-1864 | tbreneman@icloud.com |{' '}

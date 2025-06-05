@@ -70,7 +70,7 @@ const Projects: React.FC = () => {
             <div className="project-links">
               {project.liveLink && (
                 <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                  Live Demo
+                  See Live
                 </a>
               )}
               {project.githubLink && (
