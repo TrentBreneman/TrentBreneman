@@ -1,0 +1,117 @@
+.experience-section {
+  padding: 80px 40px;
+  background-color: var(--section-bg);
+  border-bottom: 1px solid var(--border-color);
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.experience-section.fade-in-slide-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-section h2 {
+  margin-bottom: 40px;
+}
+
+.experience-entry {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 30px;
+  margin: 0 auto 30px auto;
+  max-width: 900px;
+  box-shadow: 0 6px 20px var(--card-shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.experience-entry:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px var(--card-hover-shadow);
+}
+
+[data-theme='dark'] .experience-entry {
+  background-color: var(--card-bg-dark);
+  border-color: var(--card-border-dark);
+  box-shadow: 0 6px 20px var(--card-shadow-dark);
+}
+
+[data-theme='dark'] .experience-entry:hover {
+  box-shadow: 0 15px 35px var(--card-hover-shadow-dark);
+}
+
+.experience-entry h3 {
+  font-size: 1.8em;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+
+.experience-dates {
+  font-size: 1em;
+  color: var(--text-color); /* Updated to use general text-color */
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+[data-theme='dark'] .experience-dates {
+  color: var(--text-color-dark); /* Ensure dark mode consistency */
+}
+
+.experience-description {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-description li {
+  font-size: 1.05em;
+  color: var(--text-color); /* Updated to use general text-color */
+  margin-bottom: 10px;
+  position: relative;
+  /* Removed padding-left: 25px; as the icon provides spacing */
+  line-height: 1.6;
+  display: flex; /* Added for icon alignment */
+  align-items: flex-start; /* Added for icon alignment */
+}
+
+[data-theme='dark'] .experience-description li {
+  color: var(--text-color-dark); /* Ensure dark mode consistency */
+}
+
+/* Styling for the new checkmark icon */
+.feature-check-icon {
+  color: var(--accent-color); /* Use accent color for the checkmark */
+  margin-right: 10px;
+  font-size: 1.1em; /* Slightly larger icon */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+  padding-top: 2px; /* Slight adjustment for vertical alignment */
+  text-shadow: 0 0 5px var(--accent-color); /* Glow effect */
+}
+
+[data-theme='dark'] .feature-check-icon {
+  color: var(--accent-color); /* Consistent color in dark mode */
+  text-shadow: 0 0 5px var(--accent-color); /* Consistent glow in dark mode */
+}
+
+@media (max-width: 768px) {
+  .experience-section {
+    padding: 60px 20px;
+  }
+  .experience-entry {
+    padding: 25px;
+  }
+  .experience-entry h3 {
+    font-size: 1.6em;
+  }
+  .experience-dates,
+  .experience-description li {
+    font-size: 0.95em;
+  }
+  .feature-check-icon {
+    font-size: 1em;
+  }
+}

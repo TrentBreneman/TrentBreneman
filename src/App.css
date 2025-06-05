@@ -1,9 +1,9 @@
 :root {
   --primary-color: #007bff;
   --secondary-color: #6c757d;
-  --accent-color: #00bcd4; /* Keeping the vibrant cyan for highlights */
+  --accent-color: #00bcd4;
 
-  /* Light Theme - unchanged */
+  /* Light Theme */
   --header-bg-start-light: #f0f8ff;
   --header-bg-end-light: #e0f2f7;
   --header-text-color-light: #333333;
@@ -25,7 +25,7 @@
   --card-border-light: #e9ecef;
   --card-shadow-light: rgba(0, 0, 0, 0.1);
   --card-hover-shadow-light: rgba(0, 0, 0, 0.2);
-  --project-link-bg-light: #007bff;
+  --project-link-bg-light: var(--primary-color);
   --project-link-hover-bg-light: #0056b3;
   --button-bg-light: #f0f0f0;
   --button-text-light: #333333;
@@ -39,6 +39,43 @@
   --image-placeholder-bg-light: #e9ecef;
   --footer-bg-light: #343a40;
   --footer-text-light: #f8f9fa;
+
+  /* Dark Theme */
+  --header-bg-start-dark: #0a0a0a;
+  --header-bg-end-dark: #1a1a1a;
+  --header-text-color-dark: #e0e0e0;
+  --header-title-color-dark: var(--primary-color);
+  --header-tagline-color-dark: #aaaaaa;
+  --header-link-color-dark: var(--accent-color);
+  --header-link-hover-color-dark: #33e0f2;
+  --header-shadow-dark: rgba(0, 0, 0, 0.7);
+
+  --header-bg-start-rgb-dark: 10, 10, 10;
+  --header-bg-end-rgb-dark: 26, 26, 26;
+
+  --section-bg-dark: #1a1a1a;
+  --about-bg-dark: #222222;
+  --text-color-dark: #e0e0e0;
+  --heading-color-dark: var(--primary-color);
+  --border-color-dark: #333333;
+  --card-bg-dark: #222222;
+  --card-border-dark: #444444;
+  --card-shadow-dark: rgba(0, 0, 0, 0.6);
+  --card-hover-shadow-dark: rgba(0, 0, 0, 0.8);
+  --project-link-bg-dark: var(--accent-color);
+  --project-link-hover-bg-dark: #33e0f2;
+  --button-bg-dark: #333333;
+  --button-text-dark: #ffffff;
+  --button-hover-bg-dark: #444444;
+  --button-hover-text-dark: #ffffff;
+  --form-bg-dark: #222222;
+  --form-border-dark: #444444;
+  --input-bg-dark: #1a1a1a;
+  --input-text-dark: #e0e0e0;
+  --error-color-dark: #ff6b6b;
+  --image-placeholder-bg-dark: #333333;
+  --footer-bg-dark: #000000;
+  --footer-text-dark: #cccccc;
 }
 
 [data-theme='light'] {
@@ -76,45 +113,6 @@
   --image-placeholder-bg: var(--image-placeholder-bg-light);
   --footer-bg: var(--footer-bg-light);
   --footer-text: var(--footer-text-light);
-}
-
-/* Dark Theme - Updated for Vibrant Red Text and Darker Backgrounds */
-:root {
-  --header-bg-start-dark: #0a0a0a; /* Near-black */
-  --header-bg-end-dark: #1a1a1a;   /* Slightly less dark for gradient */
-  --header-text-color-dark: #ff3333; /* Vibrant red */
-  --header-title-color-dark: #ff0000; /* More intense red for title */
-  --header-tagline-color-dark: #ff6666; /* Lighter red for tagline */
-  --header-link-color-dark: #00bcd4; /* Keeping accent for links */
-  --header-link-hover-color-dark: #33e0f2; /* Lighter accent on hover */
-  --header-shadow-dark: rgba(0, 0, 0, 0.7);
-
-  --header-bg-start-rgb-dark: 10, 10, 10;
-  --header-bg-end-rgb-dark: 26, 26, 26;
-
-  --section-bg-dark: #0a0a0a; /* Main section background: near-black */
-  --about-bg-dark: #1a1a1a;   /* About section background: slightly lighter black */
-  --text-color-dark: #ff3333; /* Primary text color: vibrant red */
-  --heading-color-dark: #ff0000; /* Headings: more intense red */
-  --border-color-dark: #333333; /* Darker borders for contrast */
-  --card-bg-dark: #1a1a1a;     /* Card background: slightly lighter black */
-  --card-border-dark: #333333;
-  --card-shadow-dark: rgba(0, 0, 0, 0.8);
-  --card-hover-shadow-dark: rgba(0, 0, 0, 1);
-  --project-link-bg-dark: #00bcd4; /* Keeping accent for project links */
-  --project-link-hover-bg-dark: #33e0f2;
-  --button-bg-dark: #222222; /* Darker buttons */
-  --button-text-dark: #ff3333; /* Red text on buttons */
-  --button-hover-bg-dark: #444444;
-  --button-hover-text-dark: #ffffff; /* White text on button hover for strong contrast */
-  --form-bg-dark: #1a1a1a;
-  --form-border-dark: #333333;
-  --input-bg-dark: #2a2a2a;
-  --input-text-dark: #ff6666; /* Slightly softer red for input text */
-  --error-color-dark: #ff0000; /* Error messages: intense red */
-  --image-placeholder-bg-dark: #333333;
-  --footer-bg-dark: #000000; /* Footer background: pure black */
-  --footer-text-dark: #ff3333; /* Footer text: vibrant red */
 }
 
 [data-theme='dark'] {
@@ -171,19 +169,23 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--section-bg);
+  background: rgba(0, 0, 0, 0.1);
+  background: color-mix(in srgb, var(--section-bg) 80%, transparent);
+  background: rgba(0, 0, 0, 0.1);
+
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--primary-color);
   border-radius: 10px;
-  border: 3px solid var(--section-bg);
+  border: 3px solid rgba(0, 0, 0, 0.05); 
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--project-link-hover-bg);
 }
+
 
 body {
   margin: 0;

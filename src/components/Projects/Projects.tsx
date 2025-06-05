@@ -1,6 +1,8 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
 import './Projects.css';
-import ImageCarousel from './ImageCarousel'; // Import the new ImageCarousel component
+import ImageCarousel from '../ImageCarousel/ImageCarousel';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'; // Changed to faCircleCheck for a solid icon
 
 interface Project {
   id: string;
@@ -12,7 +14,7 @@ interface Project {
   features: string[];
   liveLink?: string;
   githubLink?: string;
-  images?: string[]; // Added for carousel
+  images?: string[];
 }
 
 const projectsData: Project[] = [
@@ -30,7 +32,7 @@ const projectsData: Project[] = [
       'Implemented responsive design to ensure optimal user experience across devices',
     ],
      liveLink: 'https://isolvrisk.com',
-     images: ['/images/business-homepage-1.jpg', '/images/business-homepage-2.jpg'], // Placeholder images
+     images: ['/images/business-homepage-1.jpg', '/images/business-homepage-2.jpg'],
   },
   {
     id: 'rumble-quiz',
@@ -46,7 +48,7 @@ const projectsData: Project[] = [
       'Incorporated features for creating custom quizzes, tracking scores, and displaying leaderboards to enhance the competitive experience.',
       'Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.',
     ],
-    images: ['/images/rumble-quiz-1.jpg', '/images/rumble-quiz-2.jpg', '/images/rumble-quiz-3.jpg'], // Placeholder images
+    images: ['/images/rumble-quiz-1.jpg', '/images/rumble-quiz-2.jpg', '/images/rumble-quiz-3.jpg'],
   },
 ];
 
@@ -119,7 +121,6 @@ const Projects: React.FC = () => {
       <div className="projects-grid">
         {filteredProjects.map((project) => (
           <div key={project.id} className="project-card">
-            {/* Integrate the ImageCarousel component here */}
             {project.images && project.images.length > 0 && (
               <ImageCarousel images={project.images} title={project.title} />
             )}
@@ -132,7 +133,10 @@ const Projects: React.FC = () => {
             </div>
             <ul className="project-features">
               {project.features.map((feature, index) => (
-                <li key={index}>{feature}</li>
+                <li key={index}>
+                  <FontAwesomeIcon icon={faCircleCheck} className="feature-check-icon" />
+                  {feature}
+                </li>
               ))}
             </ul>
             <div className="project-links">

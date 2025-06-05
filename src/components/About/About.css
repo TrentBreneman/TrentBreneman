@@ -16,11 +16,11 @@
   margin: 0 auto 20px auto;
   font-size: 1.15em;
   line-height: 1.8;
-  color: var(--text-color-dark);
+  color: var(--text-color-light);
 }
 
 [data-theme='dark'] .about-section p {
-  color: var(--text-color-light);
+  color: var(--text-color-dark);
 }
 
 @media (max-width: 768px) {

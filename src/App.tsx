@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import About from './components/About';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Education from './components/Education';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import BackToTopButton from './components/BackToTopButton';
-import NotFoundPage from './components/NotFoundPage';
-import CustomCursor from './components/CustomCursor'; // 
+import Header from './components/Header/Header';
+import About from './components/About/About';
+import Experience from './components/Experience/Experience';
+import Projects from './components/Projects/Projects';
+import Skills from './components/Skills/Skills';
+import Education from './components/Education/Education';
+import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
+import BackToTopButton from './components/BackToTop/BackToTopButton';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 import './index.css';
 import './App.css';
@@ -35,7 +34,6 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
-        <CustomCursor />
         <Header toggleTheme={toggleTheme} currentTheme={theme} />
         <Routes>
           <Route path="/" element={

@@ -29,14 +29,15 @@ const Education: React.FC = () => {
 
   return (
     <section id="education" className={`education-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={educationRef}>
-      <h2>EDUCATION</h2>
       <div className="education-entry">
-        <h3>Bachelor of Science in Computer Science - University of North Carolina at Charlotte</h3>
-        <p className="education-dates">Graduated: May 2023</p>
+      <h3>EDUCATION & SELF-LEARNING</h3>
+        <p className="education-dates">Ongoing/Self-Paced Learning</p> 
         <ul className="education-description">
-          <li>Focused on Software Engineering, Data Structures, and Algorithms.</li>
-          <li>Completed relevant coursework in Web Development, Database Management, and Object-Oriented Programming.</li>
-          <li>Actively participated in coding challenges and collaborative projects.</li>
+          <li>Completed a comprehensive full-stack curriculum through **The Odin Project**.</li>
+          <li>Gained hands-on expertise in foundational web technologies, including HTML, CSS, and JavaScript.</li>
+          <li>Developed proficiency in modern front-end development using React frameworks.</li>
+          <li>Acquired practical back-end skills with Node.js for building server-side applications.</li>
+          <li>Applied learned concepts to build practical projects, demonstrating a strong understanding of web development workflows.</li>
         </ul>
       </div>
     </section>

@@ -4,8 +4,12 @@
   padding: 40px 20px;
   text-align: center;
   font-size: 0.9em;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+[data-theme='dark'] .footer-section {
+  background-color: var(--footer-bg-dark);
+  color: var(--footer-text-dark);
 }
 
 .footer-content {
@@ -32,9 +36,17 @@
   transition: color 0.3s ease, transform 0.2s ease;
 }
 
+[data-theme='dark'] .footer-icon-link {
+  color: var(--text-color-dark);
+}
+
 .footer-icon-link:hover {
   color: var(--primary-color);
   transform: translateY(-3px) scale(1.1);
+}
+
+[data-theme='dark'] .footer-icon-link:hover {
+  color: var(--accent-color);
 }
 
 .footer-built-with {

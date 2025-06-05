@@ -1,6 +1,6 @@
-.experience-section {
+.education-section {
   padding: 80px 40px;
-  background-color: var(--section-bg);
+  background-color: var(--about-bg);
   border-bottom: 1px solid var(--border-color);
   text-align: center;
   opacity: 0;
@@ -8,16 +8,16 @@
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-.experience-section.fade-in-slide-up {
+.education-section.fade-in-slide-up {
   opacity: 1;
   transform: translateY(0);
 }
 
-.experience-section h2 {
+.education-section h2 {
   margin-bottom: 40px;
 }
 
-.experience-entry {
+.education-entry {
   background-color: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
@@ -29,41 +29,41 @@
   text-align: left;
 }
 
-.experience-entry:hover {
+.education-entry:hover {
   transform: translateY(-8px);
   box-shadow: 0 15px 35px var(--card-hover-shadow);
 }
 
-.experience-entry h3 {
+.education-entry h3 {
   font-size: 1.8em;
   color: var(--primary-color);
   margin-bottom: 8px;
 }
 
-.experience-dates {
+.education-dates {
   font-size: 1em;
-  color: var(--text-color-dark);
+  color: var(--text-color-light);
   margin-bottom: 20px;
   opacity: 0.8;
 }
 
-.experience-description {
+.education-description {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
 
-.experience-description li {
+.education-description li {
   font-size: 1.05em;
-  color: var(--text-color-dark);
+  color: var(--text-color-light);
   margin-bottom: 10px;
   position: relative;
   padding-left: 25px;
   line-height: 1.6;
 }
 
-.experience-description li::before {
-  content: '➡️';
+.education-description li::before {
+  content: '🎓';
   position: absolute;
   left: 0;
   color: var(--primary-color);
@@ -71,26 +71,26 @@
   line-height: 1.5;
 }
 
-[data-theme='dark'] .experience-dates,
-[data-theme='dark'] .experience-description li {
-  color: var(--text-color-light);
+[data-theme='dark'] .education-dates,
+[data-theme='dark'] .education-description li {
+  color: var(--text-color-dark);
 }
 
 @media (max-width: 768px) {
-  .experience-section {
+  .education-section {
     padding: 60px 20px;
   }
-  .experience-entry {
+  .education-entry {
     padding: 25px;
     margin-bottom: 25px;
   }
-  .experience-entry h3 {
+  .education-entry h3 {
     font-size: 1.6em;
   }
-  .experience-dates {
+  .education-dates {
     font-size: 0.95em;
   }
-  .experience-description li {
+  .education-description li {
     font-size: 0.95em;
     padding-left: 20px;
   }
