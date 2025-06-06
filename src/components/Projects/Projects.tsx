@@ -32,7 +32,7 @@ const projectsData: Project[] = [
       'Implemented responsive design to ensure optimal user experience across devices',
     ],
     liveLink: 'https://isolvrisk.com',
-    images: ['/isr.png', '/isr.rumble.png'], 
+    images: ['/TrentBreneman/isr.png', '/TrentBreneman/isr.rumble.png'], 
   },
   {
     id: 'rumble-quiz',
@@ -40,7 +40,7 @@ const projectsData: Project[] = [
     subtitle: 'MySQL, TypeScript, Node.js, React',
     date: 'February 2025 - Present',
     description: 'A dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning for multiple players.',
-    techStack: ['MySQL', 'TypeScript', 'Node.js', 'Express.js', 'React', 'Socket.io', 'CSS'],
+    techStack: ['MySQL', 'TypeScript', 'Node.js', 'Express.js', 'React', 'CSS'],
     features: [
       'Developed a real-time quiz engine using Socket.io, facilitating instant question delivery and answer processing for multiple players.',
       'Designed and implemented a robust backend with Node.js and Express, integrated with MySQL for efficient data management.',
@@ -48,7 +48,7 @@ const projectsData: Project[] = [
       'Incorporated features for creating custom quizzes, tracking scores, and displaying leaderboards to enhance the competitive experience.',
       'Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.',
     ],
-    images: ['/rumble.create.png', '/rumble.play.png'], 
+    images: ['/TrentBreneman/rumble.create.png', '/TrentBreneman/rumble.play.png'], 
   },
 ];
 

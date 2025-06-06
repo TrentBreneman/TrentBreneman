@@ -62,7 +62,7 @@ const App: React.FC = () => {
         <Header toggleTheme={toggleTheme} currentTheme={theme} />
         <Suspense fallback={<div className="lazy-load-fallback" role="status" aria-live="polite">Loading content...</div>}>
           <Routes>
-            <Route path="/" element={
+            <Route path="/TrentBreneman" element={
               <main tabIndex={-1} aria-label="Main content area">
                 <About />
                 <Experience />

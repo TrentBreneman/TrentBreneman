@@ -85,17 +85,31 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
 
     if (validateForm()) {
-      console.log('Attempting to send form data:', formData);
       try {
-        await new Promise((resolve) => setTimeout(resolve, 1500));
+        const formspreeEndpoint = 'https://formspree.io/f/YOUR_FORMSPREE_FORM_ID';
 
-        setSubmissionStatus('success');
-        setSubmissionMessage('Thank you for your message! I will get back to you soon.');
-        setFormData({ name: '', email: '', message: '' });
+        const response = await fetch(formspreeEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.ok) {
+          setSubmissionStatus('success');
+          setSubmissionMessage('Thank you for your message! I will get back to you soon.');
+          setFormData({ name: '', email: '', message: '' });
+        } else {
+          const data = await response.json();
+          setSubmissionStatus('error');
+          setSubmissionMessage(data.error || 'Oops! There was a problem sending your message. Please try again.');
+          console.error('Formspree error:', data);
+        }
       } catch (error) {
         setSubmissionStatus('error');
         setSubmissionMessage('There was an unexpected error. Please try again later or reach out directly.');
-        console.error('Error during form submission:', error);
+        console.error('Network error during form submission:', error);
       }
     }
     setIsSubmitting(false);

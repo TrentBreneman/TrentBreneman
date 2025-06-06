@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
 import './Header.css';
 
 interface HeaderProps {
@@ -86,6 +86,9 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, currentTheme }) => {
           </a>
         </nav>
         <p className="header-call-to-action" style={getParallaxStyle(3)}>Let's build something amazing together!</p>
+        <a href="/TrentBreneman.pdf" target="_blank" rel="noopener noreferrer" className="resume-download-button" aria-label="Download Trent's Resume">
+            <FontAwesomeIcon icon={faFileArrowDown} /> Download Resume
+        </a>
       </div>
     </header>
   );

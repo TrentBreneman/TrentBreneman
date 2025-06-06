@@ -32,13 +32,13 @@ const About: React.FC = () => {
     <section id="about" className={`about-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={aboutRef} aria-labelledby="about-heading">
       <h2 id="about-heading">ABOUT ME</h2>
       <p>
-        I am a passionate Front-End Developer with a strong foundation in building responsive, user-friendly, and highly interactive web applications. My expertise lies in crafting engaging user interfaces and seamless user experiences using modern JavaScript frameworks and libraries, particularly React and TypeScript.
+        Greetings! I'm Trent Breneman, a dedicated Front-End Developer with a fervent passion for crafting immersive and intuitive web experiences. My journey in development is fueled by a commitment to transforming complex ideas into elegant, user-friendly interfaces. I specialize in leveraging modern JavaScript frameworks and libraries to build dynamic, responsive, and high-performance web applications that not only look great but also provide exceptional usability.
       </p>
       <p>
-        I thrive in collaborative environments, continuously seeking to learn new technologies and improve my skills to deliver innovative and efficient solutions. I am committed to writing clean, maintainable code and am always eager to tackle new challenges that push the boundaries of web development.
+        My professional philosophy centers on continuous learning and collaborative problem-solving. I thrive in environments where innovation is encouraged, and I am constantly exploring new technologies and best practices to refine my craft. I believe in writing clean, modular, and maintainable code, ensuring scalability and ease of future enhancements.
       </p>
       <p>
-        Outside of coding, I enjoy exploring new hiking trails, experimenting with photography, and diving into a good book.
+        Beyond the screen, I find joy in exploring nature's trails, capturing moments through photography, and delving into the depths of a good book. These pursuits not only offer a refreshing balance to my coding endeavors but also inspire creativity and a fresh perspective that I bring back to my development work.
       </p>
     </section>
   );
