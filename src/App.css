@@ -4,9 +4,8 @@
   --accent-color: #00bcd4;
 
   --scrollbar-thumb-color: var(--primary-color);
-  --scrollbar-thumb-hover-color: var(--project-link-hover-bg);
+  --scrollbar-thumb-hover-color: #0056b3; 
 
-  /* Light Theme */
   --header-bg-start-light: #f0f8ff;
   --header-bg-end-light: #e0f2f7;
   --header-text-color-light: #333333;
@@ -43,7 +42,6 @@
   --footer-bg-light: #343a40;
   --footer-text-light: #f8f9fa;
 
-  /* Dark Theme */
   --header-bg-start-dark: #0a0a0a;
   --header-bg-end-dark: #1a1a1a;
   --header-text-color-dark: #e0e0e0;
@@ -79,8 +77,22 @@
   --image-placeholder-bg-dark: #333333;
   --footer-bg-dark: #000000;
   --footer-text-dark: #cccccc;
+
+  --font-size-base: 1rem;
+  --font-size-sm: clamp(0.75rem, 2vw, 0.875rem); 
+  --font-size-md: clamp(0.9rem, 2.2vw, 1rem); 
+  --font-size-lg: clamp(1rem, 2.5vw, 1.15rem); 
+  --font-size-xl: clamp(1.1rem, 2.8vw, 1.25rem); 
+
+  --font-size-h1: clamp(2.8rem, 7vw, 4.5rem);
+  --font-size-h2: clamp(2.2rem, 5.5vw, 3.5rem);
+  --font-size-h3: clamp(1.6rem, 4vw, 2.5rem);
+  --font-size-h4: clamp(1.2rem, 3.2vw, 1.8rem);
+  --font-size-h5: clamp(1rem, 2.5vw, 1.4rem);
+  --font-size-h6: clamp(0.9rem, 2.2vw, 1.2rem);
 }
 
+/* Theme application logic */
 [data-theme='light'] {
   --header-bg-start: var(--header-bg-start-light);
   --header-bg-end: var(--header-bg-end-light);
@@ -228,18 +240,29 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--heading-color);
   margin-top: 0;
   margin-bottom: 0.5em;
+  line-height: 1.2;
 }
 
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+h5 { font-size: var(--font-size-h5); }
+h6 { font-size: var(--font-size-h6); }
+
 p {
-  line-height: 1.6;
+  line-height: 1.7; 
+  font-size: var(--font-size-md); 
 }
 
 a {
   color: var(--primary-color);
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 a:hover {
+  color: var(--header-link-hover-color); 
   text-decoration: underline;
 }
 
@@ -247,7 +270,7 @@ section {
   padding: 80px 40px;
   background-color: var(--section-bg);
   border-bottom: 1px solid var(--border-color);
-  transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 section:last-of-type {
@@ -269,6 +292,19 @@ section:last-of-type {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+body:not(.user-is-tabbing) a:focus,
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) textarea:focus {
+  outline: none;
+}
+
+body.user-is-tabbing *:focus {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+  border-radius: 3px;
 }
 
 @media (max-width: 768px) {

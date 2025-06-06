@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect, useRef } from 'react';
 import './Projects.css';
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'; // Changed to faCircleCheck for a solid icon
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 interface Project {
   id: string;
@@ -23,7 +23,7 @@ const projectsData: Project[] = [
     title: 'Business Homepage',
     subtitle: 'PERN Stack (PostgreSQL, Express, React, Node.js)',
     date: 'October 2024 - Present',
-    description: 'A fully functional business homepage providing users with an interactive and informative experience.',
+    description: 'A fully functional business homepage providing users with an interactive and informative experience, showcasing services and contact information.',
     techStack: ['PostgreSQL', 'Express.js', 'React', 'Node.js', 'TypeScript', 'CSS'],
     features: [
       'Built a responsive React frontend that showcases the company\'s services, values, and contact information.',
@@ -31,15 +31,15 @@ const projectsData: Project[] = [
       'Integrated PostgreSQL to manage business data, including client information and service offerings.',
       'Implemented responsive design to ensure optimal user experience across devices',
     ],
-     liveLink: 'https://isolvrisk.com',
-     images: ['/images/business-homepage-1.jpg', '/images/business-homepage-2.jpg'],
+    liveLink: 'https://isolvrisk.com',
+    images: ['/isr.png', '/isr.rumble.png'], 
   },
   {
     id: 'rumble-quiz',
     title: 'Rumble | Interactive Quiz Platform',
     subtitle: 'MySQL, TypeScript, Node.js, React',
     date: 'February 2025 - Present',
-    description: 'A dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning.',
+    description: 'A dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning for multiple players.',
     techStack: ['MySQL', 'TypeScript', 'Node.js', 'Express.js', 'React', 'Socket.io', 'CSS'],
     features: [
       'Developed a real-time quiz engine using Socket.io, facilitating instant question delivery and answer processing for multiple players.',
@@ -48,7 +48,7 @@ const projectsData: Project[] = [
       'Incorporated features for creating custom quizzes, tracking scores, and displaying leaderboards to enhance the competitive experience.',
       'Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.',
     ],
-    images: ['/images/rumble-quiz-1.jpg', '/images/rumble-quiz-2.jpg', '/images/rumble-quiz-3.jpg'],
+    images: ['/rumble.create.png', '/rumble.play.png'], 
   },
 ];
 
@@ -99,7 +99,7 @@ const Projects: React.FC = () => {
   return (
     <section id="projects" className={`projects-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={projectsRef}>
       <h2>PROJECTS</h2>
-      <div className="project-filter-buttons">
+      <div className="project-filter-buttons" role="group" aria-label="Filter projects by technology">
         <button
           onClick={() => setSelectedSkill(null)}
           className={!selectedSkill ? 'active' : ''}
@@ -120,33 +120,35 @@ const Projects: React.FC = () => {
       </div>
       <div className="projects-grid">
         {filteredProjects.map((project) => (
-          <div key={project.id} className="project-card">
+          <div key={project.id} className="project-card" role="article" aria-labelledby={`${project.id}-title`}>
             {project.images && project.images.length > 0 && (
               <ImageCarousel images={project.images} title={project.title} />
             )}
-            <h3>{project.title}</h3>
-            <p className="project-subtitle">{project.subtitle}</p>
-            <p className="project-date">{project.date}</p>
-            <p className="project-description">{project.description}</p>
-            <div className="project-tech-stack">
-              <strong>Tech Stack:</strong> {project.techStack.join(', ')}
+            <div className="project-card-content">
+              <h3 id={`${project.id}-title`}>{project.title}</h3>
+              <p className="project-subtitle">{project.subtitle}</p>
+              <p className="project-date">{project.date}</p>
+              <p className="project-description">{project.description}</p>
+              <div className="project-tech-stack">
+                <strong>Tech Stack:</strong> {project.techStack.join(', ')}
+              </div>
+              <ul className="project-features">
+                {project.features.map((feature, index) => (
+                  <li key={index}>
+                    <FontAwesomeIcon icon={faCircleCheck} className="feature-check-icon" />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
             </div>
-            <ul className="project-features">
-              {project.features.map((feature, index) => (
-                <li key={index}>
-                  <FontAwesomeIcon icon={faCircleCheck} className="feature-check-icon" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
             <div className="project-links">
               {project.liveLink && (
-                <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" aria-label={`View live demo of ${project.title}`}>
                   See Live
                 </a>
               )}
               {project.githubLink && (
-                <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                <a href={project.githubLink} target="_blank" rel="noopener noreferrer" aria-label={`View GitHub repository for ${project.title}`}>
                   GitHub
                 </a>
               )}

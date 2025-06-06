@@ -2,16 +2,175 @@
 
 @import '@fortawesome/fontawesome-svg-core/styles.css';
 
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --accent-color: #00bcd4;
+
+  --scrollbar-thumb-color: var(--primary-color);
+  --scrollbar-thumb-hover-color: #0056b3;
+
+  --accent-color-transparent: rgba(0, 188, 212, 0.3);
+  --button-disabled-bg: #cccccc;
+  --button-disabled-text: #666666;
+  --success-bg: #d4edda;
+  --success-text: #28a745;
+  --error-bg: #f8d7da;
+  --error-text: #dc3545;
+
+  --light-bg: #ffffff;
+  --dark-bg: #1a202c;
+  --light-text: #333333;
+  --dark-text: #e2e8f0;
+  --light-heading: #1a202c;
+  --dark-heading: #f7fafc;
+  --light-card-bg: #ffffff;
+  --dark-card-bg: #2d3748;
+  --light-border: #e2e8f0;
+  --dark-border: #4a5568;
+  --light-shadow: rgba(0, 0, 0, 0.1);
+  --dark-shadow: rgba(0, 0, 0, 0.5);
+
+  --font-size-base: 16px;
+  --font-size-xs: clamp(0.75rem, 0.6rem + 0.1vw, 0.8rem);
+  --font-size-sm: clamp(0.875rem, 0.8rem + 0.1vw, 0.95rem);
+  --font-size-md: clamp(1rem, 0.9rem + 0.2vw, 1.15rem);
+  --font-size-lg: clamp(1.125rem, 1.05rem + 0.25vw, 1.3rem);
+
+  --font-size-h6: clamp(1.1rem, 1rem + 0.2vw, 1.25rem);
+  --font-size-h5: clamp(1.25rem, 1.1rem + 0.3vw, 1.5rem);
+  --font-size-h4: clamp(1.5rem, 1.3rem + 0.4vw, 1.8rem);
+  --font-size-h3: clamp(1.75rem, 1.5rem + 0.5vw, 2.2rem);
+  --font-size-h2: clamp(2rem, 1.7rem + 0.6vw, 2.8rem);
+  --font-size-h1: clamp(2.5rem, 2rem + 1vw, 3.5rem);
+}
+
+[data-theme='light'] {
+  --section-bg: var(--light-bg);
+  --about-bg: #f8f9fa;
+  --text-color: var(--light-text);
+  --heading-color: var(--light-heading);
+  --border-color: var(--light-border);
+  --card-bg: var(--light-card-bg);
+  --card-border: #e0e0e0;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: rgba(0, 0, 0, 0.2);
+  --button-bg: var(--primary-color);
+  --button-text: #ffffff;
+  --button-hover-bg: #0056b3;
+  --button-hover-text: #ffffff;
+  --footer-bg: #343a40;
+  --footer-text: #f8f9fa;
+  --footer-icon-color: #f8f9fa;
+  --project-link-bg: var(--primary-color);
+  --project-link-hover-bg: #0056b3;
+  --image-placeholder-bg: #e9ecef;
+}
+
+[data-theme='dark'] {
+  --section-bg: var(--dark-bg);
+  --about-bg: #28303e;
+  --text-color: var(--dark-text);
+  --heading-color: var(--dark-heading);
+  --border-color: var(--dark-border);
+  --card-bg: var(--dark-card-bg);
+  --card-border: #3a475a;
+  --card-shadow: rgba(0, 0, 0, 0.3);
+  --card-hover-shadow: rgba(0, 0, 0, 0.6);
+  --button-bg: var(--primary-color);
+  --button-text: #ffffff;
+  --button-hover-bg: #0056b3;
+  --button-hover-text: #ffffff;
+  --footer-bg: #10151c;
+  --footer-text: #b0b8c6;
+  --footer-icon-color: #b0b8c6;
+  --project-link-bg: var(--primary-color);
+  --project-link-hover-bg: #0056b3;
+  --image-placeholder-bg: #3a475a;
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--section-bg);
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Montserrat', monospace;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  line-height: 1.2;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1 { font-size: var(--font-size-h1); }
+h2 { font-size: var(--font-size-h2); }
+h3 { font-size: var(--font-size-h3); }
+h4 { font-size: var(--font-size-h4); }
+h5 { font-size: var(--font-size-h5); }
+h6 { font-size: var(--font-size-h6); }
+
+p {
+  line-height: 1.7;
+  font-size: var(--font-size-md);
+  margin-bottom: 1em;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--button-hover-bg);
+  text-decoration: underline;
+}
+
+section {
+  padding: 80px 40px;
+  background-color: var(--section-bg);
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+}
+
+section:last-of-type {
+  border-bottom: none;
+}
+
+.fade-in-slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-slide-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 60px 20px;
+  }
+}
+
+/* Accessibility: Focus styles */
+:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.user-is-tabbing :focus:not(:focus-visible) {
+  outline: none;
 }

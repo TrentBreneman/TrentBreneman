@@ -3,19 +3,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 80vh; 
+  min-height: 80vh;
   background-color: var(--section-bg);
-  color: var(--text-color-dark);
+  color: var(--text-color);
   text-align: center;
   padding: 40px 20px;
-}
-
-[data-theme='dark'] .not-found-container {
-  color: var(--text-color-light);
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .not-found-title {
-  font-size: 8em;
+  font-size: var(--font-size-h1);
   font-weight: 700;
   color: var(--primary-color);
   margin-bottom: 20px;
@@ -23,7 +20,7 @@
 }
 
 .not-found-message {
-  font-size: 1.8em;
+  font-size: var(--font-size-lg);
   margin-bottom: 30px;
   max-width: 600px;
   line-height: 1.5;
@@ -36,40 +33,32 @@
   padding: 15px 30px;
   border-radius: 8px;
   text-decoration: none;
-  font-size: 1.1em;
+  font-size: var(--font-size-md);
   font-weight: 600;
   transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
 }
 
 .not-found-home-link:hover {
-  background-color: var(--secondary-color);
+  background-color: var(--button-hover-bg);
   transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-[data-theme='dark'] .not-found-home-link {
-  color: var(--text-color-dark);
+.not-found-home-link:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
   .not-found-title {
-    font-size: 6em;
+    font-size: var(--font-size-h2);
   }
   .not-found-message {
-    font-size: 1.4em;
+    font-size: var(--font-size-md);
   }
   .not-found-home-link {
     padding: 12px 25px;
-    font-size: 1em;
-  }
-}
-
-@media (max-width: 480px) {
-  .not-found-title {
-    font-size: 4em;
-  }
-  .not-found-message {
-    font-size: 1.2em;
+    font-size: var(--font-size-sm);
   }
 }

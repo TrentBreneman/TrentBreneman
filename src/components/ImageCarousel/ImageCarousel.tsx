@@ -5,7 +5,7 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 
 interface ImageCarouselProps {
   images: string[];
-  title: string; // For accessibility (alt text)
+  title: string;
 }
 
 const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
@@ -24,7 +24,7 @@ const ImageCarousel: React.FC<ImageCarouselProps> = ({ images, title }) => {
   };
 
   if (!images || images.length === 0) {
-    return null; // Or a placeholder if no images
+    return null;
   }
 
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './Experience.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons'; // Import the faCircleCheck icon
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 const Experience: React.FC = () => {
   const experienceRef = useRef<HTMLElement>(null);
@@ -18,20 +18,21 @@ const Experience: React.FC = () => {
       { threshold: 0.1 }
     );
 
-    if (experienceRef.current) {
-      observer.observe(experienceRef.current);
+    const currentRef = experienceRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (experienceRef.current) {
-        observer.unobserve(experienceRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
 
   return (
-    <section id="experience" className={`experience-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={experienceRef}>
-      <h2>EXPERIENCE</h2>
+    <section id="experience" className={`experience-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={experienceRef} aria-labelledby="experience-heading">
+      <h2 id="experience-heading">EXPERIENCE</h2>
       <div className="experience-entry">
         <h3>Software Developer - iSolvRisk Inc.</h3>
         <p className="experience-dates">February 2024 - Present | Remote</p>

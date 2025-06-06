@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import './Contact.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
@@ -17,6 +17,7 @@ const Contact: React.FC = () => {
     email: '',
     message: '',
   });
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [submissionMessage, setSubmissionMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -31,25 +32,29 @@ const Contact: React.FC = () => {
       { threshold: 0.1 }
     );
 
-    if (contactRef.current) {
-      observer.observe(contactRef.current);
+    const currentRef = contactRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (contactRef.current) {
-        observer.unobserve(contactRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
-    // Clear error message when user starts typing
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: '' }));
-  };
+    setErrors((prevErrors) => (prevErrors[name as keyof typeof prevErrors] ? { ...prevErrors, [name]: '' } : prevErrors));
+    if (submissionStatus !== 'idle') {
+      setSubmissionStatus('idle');
+      setSubmissionMessage('');
+    }
+  }, [submissionStatus]);
 
-  const validateForm = () => {
+  const validateForm = useCallback(() => {
     let isValid = true;
     const newErrors = { name: '', email: '', message: '' };
 
@@ -61,7 +66,7 @@ const Contact: React.FC = () => {
       newErrors.email = 'Email is required.';
       isValid = false;
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Email address is invalid.';
+      newErrors.email = 'Please enter a valid email address.';
       isValid = false;
     }
     if (!formData.message.trim()) {
@@ -71,43 +76,49 @@ const Contact: React.FC = () => {
 
     setErrors(newErrors);
     return isValid;
-  };
+  }, [formData]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmissionMessage('');
+    setSubmissionStatus('idle');
     setIsSubmitting(true);
 
     if (validateForm()) {
-      console.log('Form data submitted:', formData);
-      // Simulate API call
+      console.log('Attempting to send form data:', formData);
       try {
-        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simulate network delay
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+
+        setSubmissionStatus('success');
         setSubmissionMessage('Thank you for your message! I will get back to you soon.');
-        setFormData({ name: '', email: '', message: '' }); // Clear form
+        setFormData({ name: '', email: '', message: '' });
       } catch (error) {
-        setSubmissionMessage('There was an error sending your message. Please try again.');
+        setSubmissionStatus('error');
+        setSubmissionMessage('There was an unexpected error. Please try again later or reach out directly.');
+        console.error('Error during form submission:', error);
       }
     }
     setIsSubmitting(false);
-  };
+  }, [formData, validateForm]);
 
   return (
-    <section id="contact" className={`contact-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={contactRef}>
-      <h2>CONTACT ME</h2>
+    <section id="contact" className={`contact-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={contactRef} aria-labelledby="contact-heading">
+      <h2 id="contact-heading">CONTACT ME</h2>
       <p className="contact-intro-text">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
 
       <div className="contact-content-wrapper">
-        <form className="contact-form" onSubmit={handleSubmit} noValidate>
+        <form className="contact-form" onSubmit={handleSubmit} noValidate aria-live="polite">
           <div className="form-group">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Name<span className="required-asterisk" aria-hidden="true">*</span></label>
             <input
               type="text"
               id="name"
               name="name"
               value={formData.name}
               onChange={handleChange}
-              placeholder="Your Name"
+              placeholder="Your Full Name"
+              required
+              aria-required="true"
               aria-invalid={!!errors.name}
               aria-describedby={errors.name ? 'name-error' : undefined}
             />
@@ -115,14 +126,16 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email<span className="required-asterisk" aria-hidden="true">*</span></label>
             <input
               type="email"
               id="email"
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Your Email"
+              placeholder="your.email@example.com"
+              required
+              aria-required="true"
               aria-invalid={!!errors.email}
               aria-describedby={errors.email ? 'email-error' : undefined}
             />
@@ -130,14 +143,16 @@ const Contact: React.FC = () => {
           </div>
 
           <div className="form-group">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">Message<span className="required-asterisk" aria-hidden="true">*</span></label>
             <textarea
               id="message"
               name="message"
               rows={5}
               value={formData.message}
               onChange={handleChange}
-              placeholder="Your Message"
+              placeholder="Write your message here..."
+              required
+              aria-required="true"
               aria-invalid={!!errors.message}
               aria-describedby={errors.message ? 'message-error' : undefined}
             ></textarea>
@@ -151,16 +166,26 @@ const Contact: React.FC = () => {
               </>
             )}
           </button>
-          {submissionMessage && <p className={`submission-message ${submissionMessage.includes('error') ? 'error' : 'success'}`}>{submissionMessage}</p>}
+          {submissionMessage && (
+            <p
+              className={`submission-message ${submissionStatus === 'success' ? 'success' : 'error'}`}
+              role={submissionStatus === 'error' ? 'alert' : 'status'}
+            >
+              {submissionMessage}
+            </p>
+          )}
         </form>
 
         <div className="contact-social-links">
           <h3>Or connect with me directly:</h3>
-          <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn Profile">
+          <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Connect with Trent on LinkedIn">
             <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
           </a>
-          <a href="https://github.com/TrentBreneman" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="GitHub Profile">
+          <a href="https://github.com/TrentBreneman" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="View Trent's GitHub Profile">
             <FontAwesomeIcon icon={faGithub} /> GitHub
+          </a>
+          <a href="mailto:tbreneman@icloud.com" className="social-link" aria-label="Send an email to Trent">
+            <FontAwesomeIcon icon={faPaperPlane} /> Email
           </a>
         </div>
       </div>

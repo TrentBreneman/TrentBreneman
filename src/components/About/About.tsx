@@ -16,20 +16,21 @@ const About: React.FC = () => {
       { threshold: 0.1 }
     );
 
-    if (aboutRef.current) {
-      observer.observe(aboutRef.current);
+    const currentRef = aboutRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (aboutRef.current) {
-        observer.unobserve(aboutRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
 
   return (
-    <section id="about" className={`about-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={aboutRef}>
-      <h2>ABOUT ME</h2>
+    <section id="about" className={`about-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={aboutRef} aria-labelledby="about-heading">
+      <h2 id="about-heading">ABOUT ME</h2>
       <p>
         I am a passionate Front-End Developer with a strong foundation in building responsive, user-friendly, and highly interactive web applications. My expertise lies in crafting engaging user interfaces and seamless user experiences using modern JavaScript frameworks and libraries, particularly React and TypeScript.
       </p>
