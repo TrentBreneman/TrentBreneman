@@ -86,7 +86,6 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, currentTheme }) => {
           </a>
         </nav>
         <p className="header-call-to-action" style={getParallaxStyle(3)}>Let's build something amazing together!</p>
-        {/* Added the 'download' attribute here */}
         <a href="/TrentBreneman.pdf" download="TrentBreneman.pdf" className="resume-download-button" aria-label="Download Trent's Resume">
             <FontAwesomeIcon icon={faFileArrowDown} /> Download Resume
         </a>
