@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import './Projects.css';
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -53,7 +53,7 @@ const projectsData: Project[] = [
 ];
 
 const Projects: React.FC = () => {
-  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+  // Removed selectedSkill state as filtering is no longer needed
   const projectsRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -79,47 +79,15 @@ const Projects: React.FC = () => {
     };
   }, []);
 
-  const uniqueSkills = useMemo(() => {
-    const skills = new Set<string>();
-    projectsData.forEach(project => {
-      project.techStack.forEach(skill => skills.add(skill));
-    });
-    return Array.from(skills).sort();
-  }, []);
-
-  const filteredProjects = useMemo(() => {
-    if (!selectedSkill) {
-      return projectsData;
-    }
-    return projectsData.filter(project =>
-      project.techStack.includes(selectedSkill)
-    );
-  }, [selectedSkill]);
+  // Removed uniqueSkills and filteredProjects memos as filtering is no longer needed
 
   return (
     <section id="projects" className={`projects-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={projectsRef}>
       <h2>PROJECTS</h2>
-      <div className="project-filter-buttons" role="group" aria-label="Filter projects by technology">
-        <button
-          onClick={() => setSelectedSkill(null)}
-          className={!selectedSkill ? 'active' : ''}
-          aria-pressed={!selectedSkill}
-        >
-          All
-        </button>
-        {uniqueSkills.map(skill => (
-          <button
-            key={skill}
-            onClick={() => setSelectedSkill(skill)}
-            className={selectedSkill === skill ? 'active' : ''}
-            aria-pressed={selectedSkill === skill}
-          >
-            {skill}
-          </button>
-        ))}
-      </div>
+      {/* Removed the filter buttons div */}
       <div className="projects-grid">
-        {filteredProjects.map((project) => (
+        {/* Directly map over projectsData since there's no filtering */}
+        {projectsData.map((project) => (
           <div key={project.id} className="project-card" role="article" aria-labelledby={`${project.id}-title`}>
             {project.images && project.images.length > 0 && (
               <ImageCarousel images={project.images} title={project.title} />

@@ -1,0 +1,20 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="200" height="200" rx="40" fill="#2C3E50"/>
+  <g transform="translate(0, 5)">
+    <text x="65" y="110"
+          font-family="'Poppins', sans-serif"
+          font-weight="700"
+          font-size="120"
+          text-anchor="middle"
+          dominant-baseline="central"
+          fill="#F5F7FA">T</text>
+    <text x="135" y="110"
+          font-family="'Poppins', sans-serif"
+          font-weight="700"
+          font-size="120"
+          text-anchor="middle"
+          dominant-baseline="central"
+          fill="#1ABC9C">B</text>
+  </g>
+  <rect x="80" y="40" width="30" height="150" transform="rotate(45 80 40)" fill="#2C3E50"/>
+</svg>

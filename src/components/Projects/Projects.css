@@ -236,8 +236,7 @@
   .project-subtitle,
   .project-description,
   .project-tech-stack,
-  .project-features li,
-  .project-links a {
+  .project-features li {
     font-size: var(--font-size-sm);
   }
   .project-links {
@@ -249,6 +248,7 @@
     width: 100%;
     text-align: center;
     padding: 10px 20px;
+    box-sizing: border-box;
   }
 }
 
@@ -270,5 +270,12 @@
   .projects-grid {
     grid-template-columns: 1fr;
     gap: 15px;
+  }
+  .project-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .project-links a {
+    width: 100%;
   }
 }
