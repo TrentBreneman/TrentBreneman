@@ -394,12 +394,21 @@ body.user-is-tabbing *:focus {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  #root {
+    min-height: 100vh;
   }
 
   .App {
     flex: 1;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
   }
 
   main {
@@ -407,6 +416,9 @@ body.user-is-tabbing *:focus {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 100vw;
   }
 
   section {
@@ -415,5 +427,9 @@ body.user-is-tabbing *:focus {
     flex-direction: column;
     justify-content: center;
     padding: var(--spacing-md) var(--spacing-sm);
+    max-width: 100vw; 
+    width: 100%; 
+    margin: 0; 
+    box-sizing: border-box;
   }
 }
