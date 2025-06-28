@@ -32,7 +32,7 @@ const About = () => {
     <section id="about" className={`about-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={aboutRef} aria-labelledby="about-heading">
       <h2 id="about-heading">ABOUT ME</h2>
       <p>
-        Hey there! I'm Trent Breneman, and I'm a Front-End Developer who's truly passionate about building awesome, intuitive web experiences. For me, development is all about taking complex ideas and turning them into user-friendly interfaces that just work. I love diving into modern JavaScript frameworks and libraries to create web applications that aren't just fast and responsive, but also a joy to use.
+        Hey there! I'm Trent Breneman, and I'm a Software Engineer who's truly passionate about building awesome, intuitive web experiences. For me, development is all about taking complex ideas and turning them into user-friendly interfaces that just work. I love diving into modern JavaScript frameworks and libraries to create web applications that aren't just fast and responsive, but also a joy to use.
       </p>
       <p>
         My approach to work really revolves around constantly learning and tackling challenges as a team. I thrive in places where new ideas are welcomed, and you'll often find me exploring the latest tech and best practices to keep my skills sharp. I'm a big believer in clean, modular code – the kind that makes projects easy to grow and maintain down the line.

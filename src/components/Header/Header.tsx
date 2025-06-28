@@ -11,7 +11,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ toggleTheme, currentTheme }) => {
   const [taglineText, setTaglineText] = useState('');
-  const fullTagline = 'Passionate Front-End Developer | Crafting immersive web experiences with clean code and innovative design.';
+  const fullTagline = 'Passionate Software Engineer | Crafting immersive web experiences with clean code and innovative design.';
   const [currentIndex, setCurrentIndex] = useState(0);
   const headerRef = useRef<HTMLElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
