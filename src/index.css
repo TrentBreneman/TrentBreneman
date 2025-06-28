@@ -1,3 +1,4 @@
+/* index.css */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap');
 
 @import '@fortawesome/fontawesome-svg-core/styles.css';
@@ -164,7 +165,6 @@ section:last-of-type {
   }
 }
 
-/* Accessibility: Focus styles */
 :focus-visible {
   outline: 3px solid var(--accent-color);
   outline-offset: 3px;
@@ -174,13 +174,13 @@ section:last-of-type {
 .user-is-tabbing :focus:not(:focus-visible) {
   outline: none;
 }
+
 @media screen and (orientation: landscape) {
   body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
-
 
   #root {
     min-height: 100vh;
