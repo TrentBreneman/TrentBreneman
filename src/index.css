@@ -174,3 +174,18 @@ section:last-of-type {
 .user-is-tabbing :focus:not(:focus-visible) {
   outline: none;
 }
+@media screen and (orientation: landscape) {
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  #root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+}
