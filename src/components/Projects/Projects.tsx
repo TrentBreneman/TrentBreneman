@@ -35,6 +35,7 @@ const projectsData: Project[] = [
       'Optimized image loading and performance to ensure a fast, seamless browsing experience across all devices.',
     ],
     liveLink: 'https://reesa.ink',
+    images: ['/TrentBreneman/reesa.ink.png'],
   },
   {
     id: 'business-homepage',
