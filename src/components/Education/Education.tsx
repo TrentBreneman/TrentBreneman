@@ -31,35 +31,48 @@ const Education: React.FC = () => {
   }, []);
 
   return (
-    <section id="education" className={`education-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={educationRef} aria-labelledby="education-heading">
-      <h2 id="education-heading">EDUCATION & SELF-LEARNING</h2>
+    <section
+      ref={educationRef}
+      aria-labelledby="education-heading"
+      className={`education-section ${isVisible ? 'fade-in-slide-up' : ''}`}
+      id="education"
+    >
+      <h2 id="education-heading">EDUCATION & SPECIALIZATION</h2>
       <div className="education-entry">
-        <h3>The Odin Project (Full-Stack Curriculum)</h3>
-        <p className="education-dates">Ongoing / Self-Paced Learning</p>
+        <h3>Full-Stack Curriculum Completion (The Odin Project)</h3>
+        <p className="education-dates">Completed 2024</p>
         <ul className="education-description">
           <li>
-            <FontAwesomeIcon icon={faGraduationCap} className="education-check-icon" />
-            Completed a comprehensive full-stack curriculum, building a strong foundation in modern web development.
+            <FontAwesomeIcon className="education-check-icon" icon={ faGraduationCap } />
+            Mastered a comprehensive full-stack curriculum, establishing a robust foundation in
+            HTML, CSS, JavaScript, and React.
           </li>
           <li>
-            <FontAwesomeIcon icon={faGraduationCap} className="education-check-icon" />
-            Gained hands-on expertise in foundational web technologies, including HTML, CSS, and vanilla JavaScript.
+            <FontAwesomeIcon className="education-check-icon" icon={ faGraduationCap } />
+            Developed and deployed numerous production-ready applications, demonstrating proficiency
+            in both frontend and backend architectures.
+          </li>
+        </ul>
+      </div>
+
+      <div className="education-entry">
+        <h3>Advanced Technical Specialization</h3>
+        <p className="education-dates">2024 - Present</p>
+        <ul className="education-description">
+          <li>
+            <FontAwesomeIcon className="education-check-icon" icon={ faGraduationCap } />
+            Deep-diving into system design, cloud architecture (AWS/GCP), and advanced DevOps
+            practices to build more resilient applications.
           </li>
           <li>
-            <FontAwesomeIcon icon={faGraduationCap} className="education-check-icon" />
-            Developed proficiency in modern front-end development using React, Redux, and TypeScript.
+            <FontAwesomeIcon className="education-check-icon" icon={ faGraduationCap } />
+            Continuous exploration of emerging technologies including Next.js 14+, GraphQL, and
+            high-performance database indexing.
           </li>
           <li>
-            <FontAwesomeIcon icon={faGraduationCap} className="education-check-icon" />
-            Acquired practical back-end skills with Node.js, Express, and MongoDB/PostgreSQL for building server-side applications.
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faGraduationCap} className="education-check-icon" />
-            Applied learned concepts to build numerous practical projects, demonstrating a strong understanding of web development workflows, testing, and deployment.
-          </li>
-          <li>
-            <FontAwesomeIcon icon={faGraduationCap} className="education-check-icon" />
-            Cultivated problem-solving abilities and an independent learning mindset essential for continuous growth in tech.
+            <FontAwesomeIcon className="education-check-icon" icon={ faGraduationCap } />
+            Cultivated a mindset of lifelong learning, regularly participating in technical
+            workshops and contributing to open-source discussions.
           </li>
         </ul>
       </div>

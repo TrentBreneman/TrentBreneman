@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import './Skills.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHtml5,
   faCss3Alt,
@@ -22,8 +21,9 @@ import {
   faPuzzlePiece,
   faBolt,
   faCogs,
-  faLayerGroup
+  faLayerGroup,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 interface Skill {
   name: string;
@@ -43,6 +43,7 @@ const skillsData: Skill[] = [
   { name: 'Express.js', icon: faServer, type: 'backend' },
   { name: 'Python', icon: faPython, type: 'backend' },
   { name: 'Flask', icon: faPython, type: 'backend' },
+  { name: 'GraphQL', icon: faCodeBranch, type: 'backend' },
   { name: 'PostgreSQL', icon: faDatabase, type: 'database' },
   { name: 'MongoDB', icon: faDatabase, type: 'database' },
   { name: 'SQL', icon: faDatabase, type: 'database' },
@@ -50,8 +51,9 @@ const skillsData: Skill[] = [
   { name: 'GitHub', icon: faCodeBranch, type: 'tools' },
   { name: 'Docker', icon: faDocker, type: 'tools' },
   { name: 'AWS', icon: faAws, type: 'tools' },
+  { name: 'CI/CD', icon: faCogs, type: 'tools' },
+  { name: 'Testing (Jest/Vitest)', icon: faBug, type: 'tools' },
   { name: 'Vite', icon: faBolt, type: 'tools' },
-  { name: 'Webpack', icon: faCogs, type: 'tools' },
   { name: 'Jira', icon: faLayerGroup, type: 'tools' },
   { name: 'Figma', icon: faFigma, type: 'tools' },
   { name: 'Problem Solving', icon: faPuzzlePiece, type: 'soft skills' },
@@ -85,22 +87,39 @@ const Skills: React.FC = () => {
     };
   }, []);
 
-  const categorizedSkills = skillsData.reduce((acc, skill) => {
-    (acc[skill.type] = acc[skill.type] || []).push(skill);
-    return acc;
-  }, {} as { [key: string]: Skill[] });
+  const categorizedSkills = skillsData.reduce(
+    (acc, skill) => {
+      (acc[skill.type] = acc[skill.type] || []).push(skill);
+      return acc;
+    },
+    {} as { [key: string]: Skill[] }
+  );
 
   return (
-    <section id="skills" className="skills-section" ref={sectionRef} aria-labelledby="skills-heading">
+    <section
+      ref={sectionRef}
+      aria-labelledby="skills-heading"
+      className="skills-section"
+      id="skills"
+    >
       <h2 id="skills-heading">MY SKILLS</h2>
       <div className="skills-categories">
         {Object.entries(categorizedSkills).map(([category, skills]) => (
-          <div key={category} className="skills-category" role="region" aria-labelledby={`${category}-heading`}>
-            <h3 id={`${category}-heading`}>{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
+          <div
+            key={category}
+            aria-labelledby={`${category}-heading`}
+            className="skills-category"
+            role="region"
+          >
+            <h3 id={`${category}-heading`}>
+              { category.charAt(0).toUpperCase() + category.slice(1) }
+            </h3>
             <div className="skills-grid">
               {skills.map((skill) => (
                 <div key={skill.name} className="skill-chip">
-                  {skill.icon && <FontAwesomeIcon icon={skill.icon} className="skill-icon" aria-hidden="true" />}
+                  {skill.icon && (
+                    <FontAwesomeIcon aria-hidden="true" className="skill-icon" icon={skill.icon} />
+                  ) }
                   <span>{skill.name}</span>
                 </div>
               ))}

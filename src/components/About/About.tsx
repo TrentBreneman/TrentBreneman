@@ -29,16 +29,32 @@ const About = () => {
   }, []);
 
   return (
-    <section id="about" className={`about-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={aboutRef} aria-labelledby="about-heading">
+    <section
+      ref={aboutRef}
+      aria-labelledby="about-heading"
+      className={`about-section ${isVisible ? 'fade-in-slide-up' : ''}`}
+      id="about"
+    >
       <h2 id="about-heading">ABOUT ME</h2>
       <p>
-        Hey there! I'm Trent Breneman, and I'm a Software Engineer who's truly passionate about building awesome, intuitive web experiences. For me, development is all about taking complex ideas and turning them into user-friendly interfaces that just work. I love diving into modern JavaScript frameworks and libraries to create web applications that aren't just fast and responsive, but also a joy to use.
+        Hey there! I&apos;m Trent Breneman, a Software Engineer dedicated to crafting high-impact,
+        intuitive web experiences. With several years of experience in the industry, I&apos;ve
+        transitioned from building functional interfaces to architecting scalable,
+        performance-driven applications that solve complex problems. My passion lies in bridging the
+        gap between sophisticated backend logic and elegant, user-centric frontends.
       </p>
       <p>
-        My approach to work really revolves around constantly learning and tackling challenges as a team. I thrive in places where new ideas are welcomed, and you'll often find me exploring the latest tech and best practices to keep my skills sharp. I'm a big believer in clean, modular code – the kind that makes projects easy to grow and maintain down the line.
+        My professional journey is defined by a commitment to continuous growth and technical
+        excellence. I thrive in collaborative environments where I can leverage my expertise in
+        modern JavaScript frameworks, TypeScript, and cloud technologies to drive project success.
+        I&apos;m a strong advocate for clean, maintainable code and modular architecture, ensuring that
+        the solutions I build today are ready for the challenges of tomorrow.
       </p>
       <p>
-        When I'm not coding, I'm usually out exploring nature, snapping photos, or getting lost in a good book. These hobbies aren't just a great way to unwind; they actually spark a lot of the creativity and fresh perspectives I bring back to my development work.
+        Beyond the terminal, I find inspiration in the outdoors—whether I&apos;m hiking through nature,
+        capturing moments through photography, or diving into a thought-provoking book. These
+        pursuits keep me grounded and provide the fresh perspectives that fuel my creativity and
+        problem-solving at work.
       </p>
     </section>
   );

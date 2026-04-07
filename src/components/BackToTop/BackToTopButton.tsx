@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState, useEffect, useCallback } from 'react';
 import './BackToTopButton.css';
 
 const BackToTopButton: React.FC = () => {
@@ -35,10 +35,9 @@ const BackToTopButton: React.FC = () => {
 
   return (
     <button
-      className={`back-to-top ${isVisible ? 'show' : ''}`}
-      onClick={scrollToTop}
       aria-label="Scroll to top of the page"
-    >
+      className={ `back-to-top ${isVisible ? 'show' : ''}` }
+      onClick={ scrollToTop }>
       <FontAwesomeIcon icon={faArrowUp} />
     </button>
   );

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState, useMemo } from 'react';
+
 import './Projects.css';
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,27 +21,45 @@ interface Project {
 
 const projectsData: Project[] = [
   {
+    id: 'reesa-ink',
+    title: 'Reesa | Artist Portfolio',
+    subtitle: 'React, TypeScript, CSS',
+    date: 'March 2026 - Present',
+    description:
+      'A sleek, modern portfolio for a professional tattoo artist specializing in color realism, fine line, and black & grey work. The site emphasizes visual impact and clean execution to showcase intricate artistry.',
+    techStack: ['React', 'TypeScript', 'CSS'],
+    features: [
+      'Developed a responsive, high-performance gallery for showcasing a diverse portfolio of tattoo designs.',
+      "Designed a clean, minimalist UI that highlights the artist's work through intuitive navigation and large-scale imagery.",
+      'Implemented smooth transitions and interactive elements to enhance the user experience.',
+      'Optimized image loading and performance to ensure a fast, seamless browsing experience across all devices.',
+    ],
+    liveLink: 'https://reesa.ink',
+  },
+  {
     id: 'business-homepage',
     title: 'Business Homepage',
     subtitle: 'PERN Stack (PostgreSQL, Express, React, Node.js)',
     date: 'October 2024 - Present',
-    description: 'A fully functional business homepage providing users with an interactive and informative experience, showcasing services and contact information.',
+    description:
+      'A fully functional business homepage providing users with an interactive and informative experience, showcasing services and contact information.',
     techStack: ['PostgreSQL', 'Express.js', 'React', 'Node.js', 'TypeScript', 'CSS'],
     features: [
-      'Built a responsive React frontend that showcases the company\'s services, values, and contact information.',
+      "Built a responsive React frontend that showcases the company's services, values, and contact information.",
       'Created a robust backend with Node.js and Express, handling API routes and business logic.',
       'Integrated PostgreSQL to manage business data, including client information and service offerings.',
       'Implemented responsive design to ensure optimal user experience across devices',
     ],
     liveLink: 'https://isolvrisk.com',
-    images: ['/TrentBreneman/isr.png', '/TrentBreneman/isr.rumble.png'], 
+    images: ['/TrentBreneman/isr.png', '/TrentBreneman/isr.rumble.png'],
   },
   {
     id: 'rumble-quiz',
     title: 'Rumble | Interactive Quiz Platform',
     subtitle: 'MySQL, TypeScript, Node.js, React',
     date: 'February 2025 - Present',
-    description: 'A dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning for multiple players.',
+    description:
+      'A dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning for multiple players.',
     techStack: ['MySQL', 'TypeScript', 'Node.js', 'Express.js', 'React', 'CSS'],
     features: [
       'Developed a real-time quiz engine using Socket.io, facilitating instant question delivery and answer processing for multiple players.',
@@ -48,7 +68,7 @@ const projectsData: Project[] = [
       'Incorporated features for creating custom quizzes, tracking scores, and displaying leaderboards to enhance the competitive experience.',
       'Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.',
     ],
-    images: ['/TrentBreneman/rumble.create.png', '/TrentBreneman/rumble.play.png'], 
+    images: ['/TrentBreneman/rumble.create.png', '/TrentBreneman/rumble.play.png'],
   },
 ];
 
@@ -82,13 +102,22 @@ const Projects: React.FC = () => {
   // Removed uniqueSkills and filteredProjects memos as filtering is no longer needed
 
   return (
-    <section id="projects" className={`projects-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={projectsRef}>
+    <section
+      ref={projectsRef}
+      className={`projects-section ${isVisible ? 'fade-in-slide-up' : ''}`}
+      id="projects"
+    >
       <h2>PROJECTS</h2>
       {/* Removed the filter buttons div */}
       <div className="projects-grid">
         {/* Directly map over projectsData since there's no filtering */}
         {projectsData.map((project) => (
-          <div key={project.id} className="project-card" role="article" aria-labelledby={`${project.id}-title`}>
+          <div
+            key={project.id}
+            aria-labelledby={`${project.id}-title`}
+            className="project-card"
+            role="article"
+          >
             {project.images && project.images.length > 0 && (
               <ImageCarousel images={project.images} title={project.title} />
             )}
@@ -103,7 +132,7 @@ const Projects: React.FC = () => {
               <ul className="project-features">
                 {project.features.map((feature, index) => (
                   <li key={index}>
-                    <FontAwesomeIcon icon={faCircleCheck} className="feature-check-icon" />
+                    <FontAwesomeIcon className="feature-check-icon" icon={ faCircleCheck } />
                     {feature}
                   </li>
                 ))}
@@ -111,12 +140,22 @@ const Projects: React.FC = () => {
             </div>
             <div className="project-links">
               {project.liveLink && (
-                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" aria-label={`View live demo of ${project.title}`}>
+                <a
+                  aria-label={`View live demo of ${project.title}`}
+                  href={project.liveLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
                   See Live
                 </a>
               )}
               {project.githubLink && (
-                <a href={project.githubLink} target="_blank" rel="noopener noreferrer" aria-label={`View GitHub repository for ${project.title}`}>
+                <a
+                  aria-label={`View GitHub repository for ${project.title}`}
+                  href={project.githubLink}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
                   GitHub
                 </a>
               )}

@@ -1,10 +1,4 @@
 {
-    "cSpell.words": [
-        "Breneman",
-        "Kahoot",
-        "noreferrer",
-        "PERN",
-        "predeploy",
-        "Solv"
-    ]
+  "cSpell.words": ["Breneman", "Kahoot", "noreferrer", "PERN", "predeploy", "Solv"],
+  "githubPullRequests.ignoredPullRequestBranches": ["main"]
 }

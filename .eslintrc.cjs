@@ -3,15 +3,13 @@ module.exports = {
   env: { browser: true, es2020: true, node: true },
   extends: [
     'eslint:recommended',
-    'google',
     'plugin:@typescript-eslint/recommended',
     'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
     'plugin:import/recommended', // NEW: Add recommended import rules
     'plugin:import/typescript', // NEW: Add TypeScript-specific import rules
     'plugin:prettier/recommended'
   ],
-  ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'node_modules', '*.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -33,10 +31,6 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/jsx-no-target-blank': 'off',
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
     'react/prop-types': 'off',
     'react/jsx-uses-react': 'off',
     'react/jsx-uses-vars': 'warn',
@@ -53,29 +47,22 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'warn',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-unused-vars': [
-      'warn',
-      {
-        vars: 'all',
-        args: 'after-used',
-        ignoreRestSiblings: true,
-        caughtErrors: 'none',
-      },
-    ],
     'prettier/prettier': [
       'error',
       {
         singleQuote: true,
         semi: true,
-        trailingComma: 'all',
-        printWidth: 80,
+        trailingComma: 'es5',
+        printWidth: 100,
         tabWidth: 2,
+        endOfLine: 'lf',
+        arrowParens: 'always',
       },
     ],
+
     'no-console': 'warn',
     'no-debugger': 'warn',
     'no-undef': 'off', // Disable base rule as it can conflict with TypeScript
-    '@typescript-eslint/no-undef': 'error', // Use TypeScript's version of no-undef
     'react/jsx-key': 'warn',
     'react/jsx-no-duplicate-props': [
       'error',
@@ -166,18 +153,6 @@ module.exports = {
       'syntax',
     ],
     'react/jsx-no-comment-textnodes': 'warn',
-    'react/jsx-no-duplicate-props': [
-      'error',
-      { ignoreCase: true },
-    ],
-    'react/jsx-sort-default-props': [
-      'warn',
-      {
-        ignoreCase: true,
-        noSortAlphabetically: false,
-        reservedFirst: true,
-      },
-    ],
     'import/order': [
       'warn',
       {

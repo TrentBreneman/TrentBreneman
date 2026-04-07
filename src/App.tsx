@@ -2,9 +2,9 @@
 import React, { useState, useEffect, lazy, Suspense, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
 import BackToTopButton from './components/BackToTop/BackToTopButton';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 import './index.css';
@@ -59,21 +59,29 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
-        <Header toggleTheme={toggleTheme} currentTheme={theme} />
-        <Suspense fallback={<div className="lazy-load-fallback" role="status" aria-live="polite">Loading content...</div>}>
+        <Header currentTheme={ theme } toggleTheme={ toggleTheme } />
+        <Suspense
+          fallback={
+            (<div aria-live="polite" className="lazy-load-fallback" role="status">
+              Loading content...
+            </div>)
+          }>
           <Routes>
-            <Route path="/TrentBreneman" element={
-              <main tabIndex={-1} aria-label="Main content area">
-                <About />
-                <Experience />
-                <Projects />
-                <Skills />
-                <Education />
-                <Contact />
-                <BackToTopButton />
-              </main>
-            } />
-            <Route path="*" element={<NotFoundPage />} />
+            <Route
+              element={
+                <main aria-label="Main content area" tabIndex={-1}>
+                  <About />
+                  <Experience />
+                  <Projects />
+                  <Skills />
+                  <Education />
+                  <Contact />
+                  <BackToTopButton />
+                </main>
+              }
+              path="/TrentBreneman"
+            />
+            <Route element={ <NotFoundPage /> } path="*" />
           </Routes>
         </Suspense>
         <Footer />

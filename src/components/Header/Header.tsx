@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import './Header.css';
 
 interface HeaderProps {
@@ -11,7 +11,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ toggleTheme, currentTheme }) => {
   const [taglineText, setTaglineText] = useState('');
-  const fullTagline = 'Passionate Software Engineer | Crafting immersive web experiences with clean code and innovative design.';
+  const fullTagline =
+    'Passionate Software Engineer | Crafting immersive web experiences with clean code and innovative design.';
   const [currentIndex, setCurrentIndex] = useState(0);
   const headerRef = useRef<HTMLElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -54,41 +55,66 @@ const Header: React.FC<HeaderProps> = ({ toggleTheme, currentTheme }) => {
   });
 
   return (
-    <header className="header-section" ref={headerRef} aria-label="Portfolio Header">
+    <header ref={headerRef} aria-label="Portfolio Header" className="header-section">
       <div className="theme-toggle-container">
         <button
+          aria-label={`Toggle theme to ${currentTheme === 'light' ? 'dark' : 'light'} mode`}
           className="theme-toggle-button"
           onClick={toggleTheme}
-          aria-label={`Toggle theme to ${currentTheme === 'light' ? 'dark' : 'light'} mode`}
         >
-          {currentTheme === 'light' ? (
-            <span role="img" aria-label="Moon emoji">🌙 Dark Mode</span>
+          { currentTheme === 'light' ? (
+            <span aria-label="Moon emoji" role="img">
+              🌙 Dark Mode
+            </span>
           ) : (
-            <span role="img" aria-label="Sun emoji">☀️ Light Mode</span>
-          )}
+            <span aria-label="Sun emoji" role="img">
+              ☀️ Light Mode
+            </span>
+          ) }
         </button>
       </div>
       <div className="header-content-wrapper">
-        <h1 className="header-title" style={getParallaxStyle(10)}>Trent Breneman</h1>
-        <p className="header-tagline" style={getParallaxStyle(7)}>
-          {taglineText}
-          <span className="typing-cursor" aria-hidden="true">|</span>
+        <h1 className="header-title" style={ getParallaxStyle(10) }>
+          Trent Breneman
+        </h1>
+        <p className="header-tagline" style={ getParallaxStyle(7) }>
+          { taglineText }
+          <span aria-hidden="true" className="typing-cursor">
+            |
+          </span>
         </p>
-        <nav className="header-social-links" style={getParallaxStyle(5)} aria-label="Social Links">
-          <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noopener noreferrer" aria-label="Visit Trent's LinkedIn Profile">
-            <FontAwesomeIcon icon={faLinkedinIn} />
+        <nav aria-label="Social Links" className="header-social-links" style={getParallaxStyle(5)}>
+          <a
+            href="https://linkedin.com/in/TrentBreneman"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Trent's LinkedIn Profile"
+          >
+            <FontAwesomeIcon icon={ faLinkedinIn } />
           </a>
-          <a href="https://github.com/TrentBreneman" target="_blank" rel="noopener noreferrer" aria-label="Visit Trent's GitHub Profile">
-            <FontAwesomeIcon icon={faGithub} />
+          <a
+            href="https://github.com/TrentBreneman"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Visit Trent's GitHub Profile"
+          >
+            <FontAwesomeIcon icon={ faGithub } />
           </a>
-          <a href="mailto:tbreneman@icloud.com" aria-label="Send an email to Trent">
-            <FontAwesomeIcon icon={faEnvelope} />
+          <a aria-label="Send an email to Trent" href="mailto:tbreneman@icloud.com">
+            <FontAwesomeIcon icon={ faEnvelope } />
           </a>
         </nav>
-        <p className="header-call-to-action" style={getParallaxStyle(3)}>Let's build something amazing together!</p>
-        {/* Changed href to use import.meta.env.BASE_URL */}
-        <a href={`${import.meta.env.BASE_URL}TrentBreneman.pdf`} download="TrentBreneman.pdf" className="resume-download-button" aria-label="Download Trent's Resume">
-            <FontAwesomeIcon icon={faFileArrowDown} /> Download Resume
+        <p className="header-call-to-action" style={ getParallaxStyle(3) }>
+          Let's build something amazing together!
+        </p>
+        { /* Changed href to use import.meta.env.BASE_URL */ }
+        <a
+          href={`${import.meta.env.BASE_URL}TrentBreneman.pdf`}
+          download="TrentBreneman.pdf"
+          className="resume-download-button"
+          aria-label="Download Trent's Resume"
+        >
+          <FontAwesomeIcon icon={ faFileArrowDown } /> Download Resume
         </a>
       </div>
     </header>

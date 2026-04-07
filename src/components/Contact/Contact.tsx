@@ -32,20 +32,43 @@ const Contact: React.FC = () => {
   }, []);
 
   return (
-    <section id="contact" className={`contact-section ${isVisible ? 'fade-in-slide-up' : ''}`} ref={contactRef} aria-labelledby="contact-heading">
+    <section
+      ref={contactRef}
+      aria-labelledby="contact-heading"
+      className={`contact-section ${isVisible ? 'fade-in-slide-up' : ''}`}
+      id="contact"
+    >
       <h2 id="contact-heading">CONTACT ME</h2>
-      <p className="contact-intro-text">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+      <p className="contact-intro-text">
+        I'm always open to new opportunities and collaborations. Feel free to reach out!
+      </p>
 
       <div className="contact-content-wrapper">
         <div className="contact-social-links">
           <h3>Or connect with me directly:</h3>
-          <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Connect with Trent on LinkedIn">
+          <a
+            aria-label="Connect with Trent on LinkedIn"
+            className="social-link"
+            href="https://linkedin.com/in/TrentBreneman"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
           </a>
-          <a href="https://github.com/TrentBreneman" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="View Trent's GitHub Profile">
+          <a
+            aria-label="View Trent's GitHub Profile"
+            className="social-link"
+            href="https://github.com/TrentBreneman"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <FontAwesomeIcon icon={faGithub} /> GitHub
           </a>
-          <a href="mailto:tbreneman@icloud.com" className="social-link" aria-label="Send an email to Trent">
+          <a
+            aria-label="Send an email to Trent"
+            className="social-link"
+            href="mailto:tbreneman@icloud.com"
+          >
             <FontAwesomeIcon icon={faPaperPlane} /> Email
           </a>
         </div>
