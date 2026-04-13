@@ -5,10 +5,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import BackToTopButton from './components/BackToTop/BackToTopButton';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import Navbar from './components/Navbar/Navbar';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 import './index.css';
-import './App.css';
 
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -59,6 +59,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
+        <Navbar currentTheme={ theme } toggleTheme={ toggleTheme } />
         <Header currentTheme={ theme } toggleTheme={ toggleTheme } />
         <Suspense
           fallback={
