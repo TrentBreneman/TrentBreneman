@@ -19,62 +19,44 @@ interface Project {
   images?: string[];
 }
 
-const projectsData: Project[] = [
-  {
-    id: 'reesa-ink',
-    title: 'Reesa | Artist Portfolio',
-    subtitle: 'React, TypeScript, CSS',
-    date: 'March 2026 - Present',
-    description:
-      'A sleek, modern portfolio for a professional tattoo artist specializing in color realism, fine line, and black & grey work. The site emphasizes visual impact and clean execution to showcase intricate artistry.',
-    techStack: ['React', 'TypeScript', 'CSS'],
-    features: [
-      'Developed a responsive, high-performance gallery for showcasing a diverse portfolio of tattoo designs.',
-      "Designed a clean, minimalist UI that highlights the artist's work through intuitive navigation and large-scale imagery.",
-      'Implemented smooth transitions and interactive elements to enhance the user experience.',
-      'Optimized image loading and performance to ensure a fast, seamless browsing experience across all devices.',
-    ],
-    liveLink: 'https://reesa.ink',
-    images: ['/TrentBreneman/reesa.ink.png'],
-  },
-  {
-    id: 'business-homepage',
-    title: 'Business Homepage',
-    subtitle: 'PERN Stack (PostgreSQL, Express, React, Node.js)',
-    date: 'October 2024 - Present',
-    description:
-      'A fully functional business homepage providing users with an interactive and informative experience, showcasing services and contact information.',
-    techStack: ['PostgreSQL', 'Express.js', 'React', 'Node.js', 'TypeScript', 'CSS'],
-    features: [
-      "Built a responsive React frontend that showcases the company's services, values, and contact information.",
-      'Created a robust backend with Node.js and Express, handling API routes and business logic.',
-      'Integrated PostgreSQL to manage business data, including client information and service offerings.',
-      'Implemented responsive design to ensure optimal user experience across devices',
-    ],
-    liveLink: 'https://isolvrisk.com',
-    images: ['/TrentBreneman/isr.png', '/TrentBreneman/isr.rumble.png'],
-  },
-  {
-    id: 'rumble-quiz',
-    title: 'Rumble | Interactive Quiz Platform',
-    subtitle: 'MySQL, TypeScript, Node.js, React',
-    date: 'February 2025 - Present',
-    description:
-      'A dynamic, Kahoot-inspired interactive quiz platform enabling real-time engagement and competitive learning for multiple players.',
-    techStack: ['MySQL', 'TypeScript', 'Node.js', 'Express.js', 'React', 'CSS'],
-    features: [
-      'Developed a real-time quiz engine using Socket.io, facilitating instant question delivery and answer processing for multiple players.',
-      'Designed and implemented a robust backend with Node.js and Express, integrated with MySQL for efficient data management.',
-      'Created an intuitive and responsive React frontend, allowing users to host, join, and participate in quizzes seamlessly.',
-      'Incorporated features for creating custom quizzes, tracking scores, and displaying leaderboards to enhance the competitive experience.',
-      'Focused on a modular architecture to allow for future feature expansion, such as diverse question types and user analytics.',
-    ],
-    images: ['/TrentBreneman/rumble.create.png', '/TrentBreneman/rumble.play.png'],
-  },
-];
-
 const Projects: React.FC = () => {
-  // Removed selectedSkill state as filtering is no longer needed
+  const projectsData: Project[] = useMemo(() => [
+    {
+      id: 'reesa-ink',
+      title: 'Reesa | Artist Portfolio',
+      subtitle: 'React, TypeScript, CSS',
+      date: 'March 2026 - Present',
+      description:
+        'A sleek, modern portfolio for a professional tattoo artist specializing in color realism, fine line, and black & grey work. The site emphasizes visual impact and clean execution to showcase intricate artistry.',
+      techStack: ['React', 'TypeScript', 'CSS'],
+      features: [
+        'Developed a responsive, high-performance gallery for showcasing a diverse portfolio of tattoo designs.',
+        "Designed a clean, minimalist UI that highlights the artist's work through intuitive navigation and large-scale imagery.",
+        'Implemented smooth transitions and interactive elements to enhance the user experience.',
+        'Optimized image loading and performance to ensure a fast, seamless browsing experience across all devices.',
+      ],
+      liveLink: 'https://reesa.ink',
+      images: [`${import.meta.env.BASE_URL}TrentBreneman/reesa.ink.png`],
+    },
+    {
+      id: 'business-homepage',
+      title: 'Business Homepage',
+      subtitle: 'PERN Stack (PostgreSQL, Express, React, Node.js)',
+      date: 'October 2024 - Present',
+      description:
+        'A fully functional business homepage providing users with an interactive and informative experience, showcasing services and contact information.',
+      techStack: ['PostgreSQL', 'Express.js', 'React', 'Node.js', 'TypeScript', 'CSS'],
+      features: [
+        "Built a responsive React frontend that showcases the company's services, values, and contact information.",
+        'Created a robust backend with Node.js and Express, handling API routes and business logic.',
+        'Integrated PostgreSQL to manage business data, including client information and service offerings.',
+        'Implemented responsive design to ensure optimal user experience across devices',
+      ],
+      liveLink: 'https://isolvrisk.com',
+      images: [`${import.meta.env.BASE_URL}TrentBreneman/iSolvRisk.png`],
+    },
+  ], []);
+
   const projectsRef = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
