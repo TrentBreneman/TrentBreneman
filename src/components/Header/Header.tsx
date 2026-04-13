@@ -1,7 +1,8 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { FileDown, ArrowRight } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedinIn, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faEnvelope, faFileArrowDown } from '@fortawesome/free-solid-svg-icons';
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import './Header.css';
 
 interface HeaderProps {
@@ -9,114 +10,73 @@ interface HeaderProps {
   currentTheme: string;
 }
 
-const Header: React.FC<HeaderProps> = ({ toggleTheme, currentTheme }) => {
-  const [taglineText, setTaglineText] = useState('');
-  const fullTagline =
-    'Passionate Software Engineer | Crafting immersive web experiences with clean code and innovative design.';
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const headerRef = useRef<HTMLElement>(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    if (currentIndex < fullTagline.length) {
-      const timeout = setTimeout(() => {
-        setTaglineText((prevText) => prevText + fullTagline[currentIndex]);
-        setCurrentIndex((prevIndex) => prevIndex + 1);
-      }, 50);
-      return () => clearTimeout(timeout);
-    }
-  }, [currentIndex, fullTagline]);
-
-  const handleMouseMove = useCallback((event: MouseEvent) => {
-    if (headerRef.current) {
-      const { clientX, clientY } = event;
-      const { left, top, width, height } = headerRef.current.getBoundingClientRect();
-      const x = (clientX - (left + width / 2)) / (width / 2);
-      const y = (clientY - (top + height / 2)) / (height / 2);
-      setMousePosition({ x, y });
-    }
-  }, []);
-
-  useEffect(() => {
-    const headerElement = headerRef.current;
-    if (headerElement) {
-      headerElement.addEventListener('mousemove', handleMouseMove);
-    }
-
-    return () => {
-      if (headerElement) {
-        headerElement.removeEventListener('mousemove', handleMouseMove);
-      }
-    };
-  }, [handleMouseMove]);
-
-  const getParallaxStyle = (depth: number) => ({
-    transform: `translate(${mousePosition.x * depth}px, ${mousePosition.y * depth}px)`,
-  });
-
+const Header: React.FC<HeaderProps> = () => {
   return (
-    <header ref={headerRef} aria-label="Portfolio Header" className="header-section">
-      <div className="theme-toggle-container">
-        <button
-          aria-label={`Toggle theme to ${currentTheme === 'light' ? 'dark' : 'light'} mode`}
-          className="theme-toggle-button"
-          onClick={toggleTheme}
-        >
-          { currentTheme === 'light' ? (
-            <span aria-label="Moon emoji" role="img">
-              🌙 Dark Mode
-            </span>
-          ) : (
-            <span aria-label="Sun emoji" role="img">
-              ☀️ Light Mode
-            </span>
-          ) }
-        </button>
+    <header aria-label="Portfolio Hero" className="hero-section">
+      <div className="hero-background">
+        <div className="blob blob-1"></div>
+        <div className="blob blob-2"></div>
+        <div className="blob blob-3"></div>
       </div>
-      <div className="header-content-wrapper">
-        <h1 className="header-title" style={ getParallaxStyle(10) }>
-          Trent Breneman
-        </h1>
-        <p className="header-tagline" style={ getParallaxStyle(7) }>
-          { taglineText }
-          <span aria-hidden="true" className="typing-cursor">
-            |
-          </span>
-        </p>
-        <nav aria-label="Social Links" className="header-social-links" style={getParallaxStyle(5)}>
-          <a
-            href="https://linkedin.com/in/TrentBreneman"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Trent's LinkedIn Profile"
-          >
-            <FontAwesomeIcon icon={ faLinkedinIn } />
-          </a>
-          <a
-            href="https://github.com/TrentBreneman"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Visit Trent's GitHub Profile"
-          >
-            <FontAwesomeIcon icon={ faGithub } />
-          </a>
-          <a aria-label="Send an email to Trent" href="mailto:tbreneman@icloud.com">
-            <FontAwesomeIcon icon={ faEnvelope } />
-          </a>
-        </nav>
-        <p className="header-call-to-action" style={ getParallaxStyle(3) }>
-          Let's build something amazing together!
-        </p>
-        { /* Changed href to use import.meta.env.BASE_URL */ }
-        <a
-          href={`${import.meta.env.BASE_URL}TrentBreneman.pdf`}
-          download="TrentBreneman.pdf"
-          className="resume-download-button"
-          aria-label="Download Trent's Resume"
+
+      <div className="hero-content">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="hero-badge"
         >
-          <FontAwesomeIcon icon={ faFileArrowDown } /> Download Resume
-        </a>
+          <span>Available for new opportunities</span>
+        </motion.div>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="hero-title"
+        >
+          Building Digital <span className="gradient-text">Experiences</span> that Matter.
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="hero-subtitle"
+        >
+          Hi, I'm <span className="highlight">Trent Breneman</span>. A Software Engineer focused on 
+          creating high-performance, user-centric applications with modern technologies.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="hero-cta"
+        >
+          <a href="#projects" className="btn btn-primary">
+            View My Work <ArrowRight size={18} style={{ marginLeft: '8px' }} />
+          </a>
+          <a
+            href={`${import.meta.env.BASE_URL}TrentBreneman.pdf`}
+            download="TrentBreneman.pdf"
+            className="btn btn-outline"
+          >
+            <FileDown size={18} style={{ marginRight: '8px' }} /> Resume
+          </a>
+        </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.5 }}
+        className="scroll-indicator"
+      >
+        <div className="mouse">
+          <div className="wheel"></div>
+        </div>
+      </motion.div>
     </header>
   );
 };

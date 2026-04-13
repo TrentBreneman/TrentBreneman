@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { motion } from 'framer-motion';
 import './Skills.css';
 import {
   faHtml5,
@@ -62,31 +63,6 @@ const skillsData: Skill[] = [
 ];
 
 const Skills: React.FC = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in-slide-up');
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentRef = sectionRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
-
   const categorizedSkills = skillsData.reduce(
     (acc, skill) => {
       (acc[skill.type] = acc[skill.type] || []).push(skill);
@@ -95,37 +71,64 @@ const Skills: React.FC = () => {
     {} as { [key: string]: Skill[] }
   );
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <section
-      ref={sectionRef}
-      aria-labelledby="skills-heading"
-      className="skills-section"
-      id="skills"
-    >
-      <h2 id="skills-heading">MY SKILLS</h2>
-      <div className="skills-categories">
-        {Object.entries(categorizedSkills).map(([category, skills]) => (
-          <div
-            key={category}
-            aria-labelledby={`${category}-heading`}
-            className="skills-category"
-            role="region"
-          >
-            <h3 id={`${category}-heading`}>
-              { category.charAt(0).toUpperCase() + category.slice(1) }
-            </h3>
-            <div className="skills-grid">
-              {skills.map((skill) => (
-                <div key={skill.name} className="skill-chip">
-                  {skill.icon && (
-                    <FontAwesomeIcon aria-hidden="true" className="skill-icon" icon={skill.icon} />
-                  ) }
-                  <span>{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
+    <section id="skills" className="skills-section">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="section-header"
+        >
+          <h2 className="section-title">My Technical Arsenal</h2>
+          <div className="section-divider"></div>
+        </motion.div>
+
+        <div className="skills-categories">
+          {Object.entries(categorizedSkills).map(([category, skills]) => (
+            <motion.div
+              key={category}
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="skills-category glass"
+            >
+              <h3 className="category-title">
+                {category.charAt(0).toUpperCase() + category.slice(1)}
+              </h3>
+              <div className="skills-grid">
+                {skills.map((skill) => (
+                  <motion.div
+                    key={skill.name}
+                    variants={itemVariants}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    className="skill-chip"
+                  >
+                    <FontAwesomeIcon icon={skill.icon} className="skill-icon" />
+                    <span>{skill.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

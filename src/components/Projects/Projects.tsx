@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState, useMemo } from 'react';
-
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ExternalLink, CheckCircle2 } from 'lucide-react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import './Projects.css';
 import ImageCarousel from '../ImageCarousel/ImageCarousel';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 interface Project {
   id: string;
@@ -19,132 +19,116 @@ interface Project {
   images?: string[];
 }
 
+const projectsData: Project[] = [
+  {
+    id: 'reesa-ink',
+    title: 'Reesa | Artist Portfolio',
+    subtitle: 'React, TypeScript, CSS',
+    date: 'March 2026 - Present',
+    description:
+      'A sleek, modern portfolio for a professional tattoo artist specializing in color realism, fine line, and black & grey work.',
+    techStack: ['React', 'TypeScript', 'CSS'],
+    features: [
+      'Developed a responsive, high-performance gallery.',
+      'Designed a clean, minimalist UI.',
+      'Implemented smooth transitions and interactive elements.',
+      'Optimized image loading and performance.',
+    ],
+    liveLink: 'https://reesa.ink',
+    images: [`${import.meta.env.BASE_URL}TrentBreneman/reesa.ink.png`],
+  },
+  {
+    id: 'business-homepage',
+    title: 'iSolvRisk | Business Homepage',
+    subtitle: 'PERN Stack (PostgreSQL, Express, React, Node.js)',
+    date: 'October 2024 - Present',
+    description:
+      'A fully functional business homepage providing users with an interactive and informative experience.',
+    techStack: ['PostgreSQL', 'Express.js', 'React', 'Node.js', 'TypeScript', 'CSS'],
+    features: [
+      'Built a responsive React frontend.',
+      'Created a robust backend with Node.js and Express.',
+      'Integrated PostgreSQL to manage business data.',
+      'Implemented responsive design for all devices.',
+    ],
+    liveLink: 'https://isolvrisk.com',
+    images: [`${import.meta.env.BASE_URL}TrentBreneman/iSolvRisk.png`],
+  },
+];
+
 const Projects: React.FC = () => {
-  const projectsData: Project[] = useMemo(() => [
-    {
-      id: 'reesa-ink',
-      title: 'Reesa | Artist Portfolio',
-      subtitle: 'React, TypeScript, CSS',
-      date: 'March 2026 - Present',
-      description:
-        'A sleek, modern portfolio for a professional tattoo artist specializing in color realism, fine line, and black & grey work. The site emphasizes visual impact and clean execution to showcase intricate artistry.',
-      techStack: ['React', 'TypeScript', 'CSS'],
-      features: [
-        'Developed a responsive, high-performance gallery for showcasing a diverse portfolio of tattoo designs.',
-        "Designed a clean, minimalist UI that highlights the artist's work through intuitive navigation and large-scale imagery.",
-        'Implemented smooth transitions and interactive elements to enhance the user experience.',
-        'Optimized image loading and performance to ensure a fast, seamless browsing experience across all devices.',
-      ],
-      liveLink: 'https://reesa.ink',
-      images: [`${import.meta.env.BASE_URL}TrentBreneman/reesa.ink.png`],
-    },
-    {
-      id: 'business-homepage',
-      title: 'Business Homepage',
-      subtitle: 'PERN Stack (PostgreSQL, Express, React, Node.js)',
-      date: 'October 2024 - Present',
-      description:
-        'A fully functional business homepage providing users with an interactive and informative experience, showcasing services and contact information.',
-      techStack: ['PostgreSQL', 'Express.js', 'React', 'Node.js', 'TypeScript', 'CSS'],
-      features: [
-        "Built a responsive React frontend that showcases the company's services, values, and contact information.",
-        'Created a robust backend with Node.js and Express, handling API routes and business logic.',
-        'Integrated PostgreSQL to manage business data, including client information and service offerings.',
-        'Implemented responsive design to ensure optimal user experience across devices',
-      ],
-      liveLink: 'https://isolvrisk.com',
-      images: [`${import.meta.env.BASE_URL}TrentBreneman/iSolvRisk.png`],
-    },
-  ], []);
-
-  const projectsRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (projectsRef.current) {
-      observer.observe(projectsRef.current);
-    }
-
-    return () => {
-      if (projectsRef.current) {
-        observer.unobserve(projectsRef.current);
-      }
-    };
-  }, []);
-
-  // Removed uniqueSkills and filteredProjects memos as filtering is no longer needed
-
   return (
-    <section
-      ref={projectsRef}
-      className={`projects-section ${isVisible ? 'fade-in-slide-up' : ''}`}
-      id="projects"
-    >
-      <h2>PROJECTS</h2>
-      {/* Removed the filter buttons div */}
-      <div className="projects-grid">
-        {/* Directly map over projectsData since there's no filtering */}
-        {projectsData.map((project) => (
-          <div
-            key={project.id}
-            aria-labelledby={`${project.id}-title`}
-            className="project-card"
-            role="article"
-          >
-            {project.images && project.images.length > 0 && (
-              <ImageCarousel images={project.images} title={project.title} />
-            )}
-            <div className="project-card-content">
-              <h3 id={`${project.id}-title`}>{project.title}</h3>
-              <p className="project-subtitle">{project.subtitle}</p>
-              <p className="project-date">{project.date}</p>
-              <p className="project-description">{project.description}</p>
-              <div className="project-tech-stack">
-                <strong>Tech Stack:</strong> {project.techStack.join(', ')}
+    <section id="projects" className="projects-section">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="section-header"
+        >
+          <h2 className="section-title">Selected Projects</h2>
+          <div className="section-divider"></div>
+        </motion.div>
+
+        <div className="projects-grid">
+          {projectsData.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              className="project-card glass"
+            >
+              <div className="project-image">
+                {project.images && project.images.length > 0 && (
+                  <ImageCarousel images={project.images} title={project.title} />
+                )}
               </div>
-              <ul className="project-features">
-                {project.features.map((feature, index) => (
-                  <li key={index}>
-                    <FontAwesomeIcon className="feature-check-icon" icon={ faCircleCheck } />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="project-links">
-              {project.liveLink && (
-                <a
-                  aria-label={`View live demo of ${project.title}`}
-                  href={project.liveLink}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  See Live
-                </a>
-              )}
-              {project.githubLink && (
-                <a
-                  aria-label={`View GitHub repository for ${project.title}`}
-                  href={project.githubLink}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  GitHub
-                </a>
-              )}
-            </div>
-          </div>
-        ))}
+              
+              <div className="project-content">
+                <div className="project-header">
+                  <h3 className="project-title">{project.title}</h3>
+                  <span className="project-date">{project.date}</span>
+                </div>
+                
+                <p className="project-subtitle">{project.subtitle}</p>
+                <p className="project-description">{project.description}</p>
+                
+                <div className="project-tech">
+                  {project.techStack.map((tech) => (
+                    <span key={tech} className="tech-tag">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <ul className="project-features">
+                  {project.features.map((feature, i) => (
+                    <li key={i}>
+                      <CheckCircle2 size={16} className="feature-icon" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="project-links">
+                  {project.liveLink && (
+                    <a href={project.liveLink} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm">
+                      <ExternalLink size={16} /> Live Demo
+                    </a>
+                  )}
+                  {project.githubLink && (
+                    <a href={project.githubLink} target="_blank" rel="noreferrer" className="btn btn-outline btn-sm">
+                      <FontAwesomeIcon icon={faGithub} /> Code
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

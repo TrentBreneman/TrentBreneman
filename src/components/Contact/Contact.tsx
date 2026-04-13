@@ -1,76 +1,87 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './Contact.css';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Mail, Send } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
-import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import './Contact.css';
 
 const Contact: React.FC = () => {
-  const contactRef = useRef<HTMLElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    const currentRef = contactRef.current;
-    if (currentRef) {
-      observer.observe(currentRef);
-    }
-
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef);
-      }
-    };
-  }, []);
-
   return (
-    <section
-      ref={contactRef}
-      aria-labelledby="contact-heading"
-      className={`contact-section ${isVisible ? 'fade-in-slide-up' : ''}`}
-      id="contact"
-    >
-      <h2 id="contact-heading">CONTACT ME</h2>
-      <p className="contact-intro-text">
-        I'm always open to new opportunities and collaborations. Feel free to reach out!
-      </p>
+    <section id="contact" className="contact-section">
+      <div className="container">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="section-header"
+        >
+          <h2 className="section-title">Get In Touch</h2>
+          <div className="section-divider"></div>
+        </motion.div>
 
-      <div className="contact-content-wrapper">
-        <div className="contact-social-links">
-          <h3>Or connect with me directly:</h3>
-          <a
-            aria-label="Connect with Trent on LinkedIn"
-            className="social-link"
-            href="https://linkedin.com/in/TrentBreneman"
-            rel="noopener noreferrer"
-            target="_blank"
+        <div className="contact-grid">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="contact-info"
           >
-            <FontAwesomeIcon icon={faLinkedin} /> LinkedIn
-          </a>
-          <a
-            aria-label="View Trent's GitHub Profile"
-            className="social-link"
-            href="https://github.com/TrentBreneman"
-            rel="noopener noreferrer"
-            target="_blank"
+            <h3 className="contact-subtitle">Let's build something great.</h3>
+            <p className="contact-text">
+              I'm currently looking for new opportunities and my inbox is always open. 
+              Whether you have a question or just want to say hi, I'll try my best to get back to you!
+            </p>
+
+            <div className="contact-methods">
+              <a href="mailto:tbreneman@icloud.com" className="contact-method glass">
+                <div className="icon-box">
+                  <Mail size={24} />
+                </div>
+                <div className="method-details">
+                  <span>Email</span>
+                  <strong>tbreneman@icloud.com</strong>
+                </div>
+              </a>
+
+              <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noreferrer" className="contact-method glass">
+                <div className="icon-box">
+                  <FontAwesomeIcon icon={faLinkedin} size="lg" />
+                </div>
+                <div className="method-details">
+                  <span>LinkedIn</span>
+                  <strong>Trent Breneman</strong>
+                </div>
+              </a>
+
+              <a href="https://github.com/TrentBreneman" target="_blank" rel="noreferrer" className="contact-method glass">
+                <div className="icon-box">
+                  <FontAwesomeIcon icon={faGithub} size="lg" />
+                </div>
+                <div className="method-details">
+                  <span>GitHub</span>
+                  <strong>TrentBreneman</strong>
+                </div>
+              </a>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="contact-form-container glass"
           >
-            <FontAwesomeIcon icon={faGithub} /> GitHub
-          </a>
-          <a
-            aria-label="Send an email to Trent"
-            className="social-link"
-            href="mailto:tbreneman@icloud.com"
-          >
-            <FontAwesomeIcon icon={faPaperPlane} /> Email
-          </a>
+            <div className="contact-cta">
+               <h3>Quick Contact</h3>
+               <p>The best way to reach me is via email or LinkedIn.</p>
+               <a href="mailto:tbreneman@icloud.com" className="btn btn-primary btn-lg">
+                  <Send size={18} style={{ marginRight: '10px' }} /> Send Message
+               </a>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
