@@ -6,6 +6,17 @@ import './Experience.css';
 const Experience: React.FC = () => {
   const experiences = [
     {
+      company: 'Bonefish Grill',
+      role: 'Assistant Culinary Manager',
+      period: 'Aug 2025 – Present',
+      location: 'Lakewood, CO',
+      description: [
+        'Lead operations for a 15+ person team, focusing on efficiency, execution, and performance under pressure.',
+        'Optimized workflows and resource allocation, directly improving operational efficiency.',
+        'Enforced strict quality control and process consistency in a high-volume environment.',
+      ],
+    },
+    {
       company: 'iSolvRisk Inc.',
       role: 'Software Developer',
       period: 'February 2024 - Present',
