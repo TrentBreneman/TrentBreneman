@@ -23,6 +23,7 @@
 }
 
 .project-image {
+  display: flex;
   height: 100%;
   min-height: 350px;
   background: var(--bg-secondary);
