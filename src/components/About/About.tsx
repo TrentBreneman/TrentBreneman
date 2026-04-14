@@ -25,9 +25,8 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="about-image-container"
           >
-             {/* You can add a profile image here if you have one */}
-             <div className="image-placeholder glass">
-                <span className="initials">TB</span>
+             <div className="about-image glass">
+                <img src={`${import.meta.env.BASE_URL}Trent.png`} alt="Trent Breneman" className="profile-img" />
              </div>
           </motion.div>
 
