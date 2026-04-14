@@ -35,13 +35,13 @@ const Contact: React.FC = () => {
             </p>
 
             <div className="contact-methods">
-              <a href="mailto:tbreneman@icloud.com" className="contact-method glass">
+              <a href="mailto:trentbreneman@icloud.com" className="contact-method glass">
                 <div className="icon-box">
                   <Mail size={24} />
                 </div>
                 <div className="method-details">
                   <span>Email</span>
-                  <strong>tbreneman@icloud.com</strong>
+                  <strong>trentbreneman@icloud.com</strong>
                 </div>
               </a>
 
