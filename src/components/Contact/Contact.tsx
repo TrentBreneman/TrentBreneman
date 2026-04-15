@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
                 </div>
               </a>
 
-              <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noreferrer" className="contact-method glass">
+              <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noopener noreferrer" className="contact-method glass">
                 <div className="icon-box">
                   <FontAwesomeIcon icon={faLinkedin} size="lg" />
                 </div>
@@ -55,7 +55,7 @@ const Contact: React.FC = () => {
                 </div>
               </a>
 
-              <a href="https://github.com/TrentBreneman" target="_blank" rel="noreferrer" className="contact-method glass">
+              <a href="https://github.com/TrentBreneman" target="_blank" rel="noopener noreferrer" className="contact-method glass">
                 <div className="icon-box">
                   <FontAwesomeIcon icon={faGithub} size="lg" />
                 </div>

@@ -115,12 +115,12 @@ const Projects: React.FC = () => {
 
                 <div className="project-links">
                   {project.liveLink && (
-                    <a href={project.liveLink} target="_blank" rel="noreferrer" className="btn btn-primary btn-sm">
+                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="btn btn-primary btn-sm">
                       <ExternalLink size={16} /> Live Demo
                     </a>
                   )}
                   {project.githubLink && (
-                    <a href={project.githubLink} target="_blank" rel="noreferrer" className="btn btn-outline btn-sm">
+                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-sm">
                       <FontAwesomeIcon icon={faGithub} /> Code
                     </a>
                   )}

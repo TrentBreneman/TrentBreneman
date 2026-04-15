@@ -7,6 +7,7 @@ import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
+import CustomCursor from './components/CustomCursor/CustomCursor';
 
 import './index.css';
 
@@ -59,6 +60,7 @@ const App: React.FC = () => {
   return (
     <Router>
       <div className="App">
+        <CustomCursor />
         <Navbar currentTheme={ theme } toggleTheme={ toggleTheme } />
         <Header currentTheme={ theme } toggleTheme={ toggleTheme } />
         <Suspense

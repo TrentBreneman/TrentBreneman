@@ -54,10 +54,10 @@
   --bg-secondary: var(--slate-100);
   --text-color: var(--slate-700);
   --heading-color: var(--slate-900);
-  --border-color: var(--slate-200);
+  --border-color: rgba(0, 0, 0, 0.05);
   --card-bg: rgba(255, 255, 255, 0.8);
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: rgba(0, 0, 0, 0.05);
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.08);
 }
 
 [data-theme='dark'] {
@@ -65,10 +65,15 @@
   --bg-secondary: var(--slate-900);
   --text-color: var(--slate-400);
   --heading-color: var(--slate-50);
-  --border-color: var(--slate-800);
+  --border-color: rgba(255, 255, 255, 0.05);
   --card-bg: rgba(15, 23, 42, 0.8);
-  --glass-bg: rgba(2, 6, 23, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: white;
 }
 
 * {
@@ -120,6 +125,13 @@ section {
   -webkit-backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border);
   border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-speed), box-shadow var(--transition-speed), background var(--transition-speed);
+}
+
+.glass:hover {
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-md);
 }
 
 .btn {
@@ -133,6 +145,7 @@ section {
   cursor: pointer;
   border: none;
   font-family: var(--font-body);
+  text-decoration: none;
 }
 
 .btn-primary {
@@ -143,7 +156,7 @@ section {
 .btn-primary:hover {
   background: var(--emerald-600);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
 }
 
 /* Animations */
@@ -160,7 +173,7 @@ section {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -169,7 +182,7 @@ section {
 
 ::-webkit-scrollbar-thumb {
   background: var(--slate-300);
-  border-radius: 5px;
+  border-radius: 10px;
 }
 
 [data-theme='dark'] ::-webkit-scrollbar-thumb {
@@ -178,4 +191,20 @@ section {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--primary-color);
+}
+
+/* Utility Classes */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.section-divider {
+  height: 4px;
+  width: 60px;
+  background: var(--primary-color);
+  border-radius: 2px;
+  margin-bottom: 2rem;
 }

@@ -42,12 +42,13 @@
   font-weight: 500;
   color: var(--text-color);
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .skill-chip:hover {
   border-color: var(--primary-color);
-  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+  background: var(--bg-secondary);
 }
 
 .skill-icon {

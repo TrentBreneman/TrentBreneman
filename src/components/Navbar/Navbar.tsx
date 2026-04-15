@@ -54,8 +54,8 @@ const Navbar: React.FC<NavbarProps> = ({ currentTheme, toggleTheme }) => {
           </button>
           
           <div className="navbar-socials">
-             <a href="https://github.com/TrentBreneman" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
-             <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
+             <a href="https://github.com/TrentBreneman" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithub} /></a>
+             <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedin} /></a>
           </div>
         </div>
       </div>

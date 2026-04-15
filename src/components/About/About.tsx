@@ -38,7 +38,7 @@ const About = () => {
             className="about-content"
           >
             <p>
-              Hey there! I'm <span className="highlight">Trent Breneman</span>, a Software Engineer dedicated to crafting high-impact,
+              Hey there! I'm <span className="text-gradient" style={{ fontWeight: 800 }}>Trent Breneman</span>, a Software Engineer dedicated to crafting high-impact,
               intuitive web experiences. With several years of experience in the industry, I've
               transitioned from building functional interfaces to architecting scalable,
               performance-driven applications.

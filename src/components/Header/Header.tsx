@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { FileDown, ArrowRight } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
@@ -11,6 +11,26 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = () => {
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
   return (
     <header aria-label="Portfolio Hero" className="hero-section">
       <div className="hero-background">
@@ -19,41 +39,26 @@ const Header: React.FC<HeaderProps> = () => {
         <div className="blob blob-3"></div>
       </div>
 
-      <div className="hero-content">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="hero-badge"
-        >
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="hero-content"
+      >
+        <motion.div variants={itemVariants} className="hero-badge">
           <span>Available for new opportunities</span>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="hero-title"
-        >
+        <motion.h1 variants={itemVariants} className="hero-title">
           Building Digital <span className="gradient-text">Experiences</span> that Matter.
         </motion.h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="hero-subtitle"
-        >
+        <motion.p variants={itemVariants} className="hero-subtitle">
           Hi, I'm <span className="highlight">Trent Breneman</span>. A Software Engineer focused on 
           creating high-performance, user-centric applications with modern technologies.
         </motion.p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="hero-cta"
-        >
+        <motion.div variants={itemVariants} className="hero-cta">
           <a href="#projects" className="btn btn-primary">
             View My Work <ArrowRight size={18} style={{ marginLeft: '8px' }} />
           </a>
@@ -65,12 +70,12 @@ const Header: React.FC<HeaderProps> = () => {
             <FileDown size={18} style={{ marginRight: '8px' }} /> Resume
           </a>
         </motion.div>
-      </div>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 0.5 }}
+        transition={{ duration: 1, delay: 1 }}
         className="scroll-indicator"
       >
         <div className="mouse">
