@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle2, Briefcase } from 'lucide-react';
+import { CheckCircle2, Briefcase, Calendar, MapPin } from 'lucide-react';
 import './Experience.css';
 
 const Experience: React.FC = () => {
@@ -59,39 +59,56 @@ const Experience: React.FC = () => {
           <div className="section-divider"></div>
         </motion.div>
 
-        <div className="experience-timeline">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="experience-item glass"
-            >
-              <div className="experience-header">
-                <div className="exp-role">
-                  <Briefcase size={20} className="role-icon" />
-                  <h3>{exp.role}</h3>
+        <div className="experience-timeline-container">
+          <div className="timeline-line"></div>
+          
+          <div className="experience-timeline">
+            {experiences.map((exp, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                className="experience-timeline-item"
+              >
+                <div className="timeline-node">
+                  <div className="node-inner">
+                    <Briefcase size={16} />
+                  </div>
                 </div>
-                <span className="exp-period">{exp.period}</span>
-              </div>
-              
-              <div className="exp-company">
-                <h4>{exp.company}</h4>
-                <span className="exp-location">{exp.location}</span>
-              </div>
+                
+                <div className="experience-item glass">
+                  <div className="experience-header">
+                    <div className="exp-role-info">
+                      <h3 className="exp-role-title">{exp.role}</h3>
+                      <div className="exp-meta">
+                        <span className="exp-company-name">{exp.company}</span>
+                        <span className="exp-separator">•</span>
+                        <span className="exp-location">
+                          <MapPin size={13} style={{ marginRight: '4px', display: 'inline-block', verticalAlign: 'text-bottom' }} />
+                          {exp.location}
+                        </span>
+                      </div>
+                    </div>
+                    <span className="exp-period">
+                      <Calendar size={13} style={{ marginRight: '6px', display: 'inline-block', verticalAlign: 'text-bottom' }} />
+                      {exp.period}
+                    </span>
+                  </div>
 
-              <ul className="exp-description">
-                {exp.description.map((item, i) => (
-                  <li key={i}>
-                    <CheckCircle2 size={16} className="check-icon" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
+                  <ul className="exp-description">
+                    {exp.description.map((item, i) => (
+                      <li key={i}>
+                        <CheckCircle2 size={16} className="check-icon" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
