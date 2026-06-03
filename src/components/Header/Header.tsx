@@ -1,8 +1,6 @@
 import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { FileDown, ArrowRight } from 'lucide-react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import './Header.css';
 
 interface HeaderProps {
@@ -37,6 +35,7 @@ const Header: React.FC<HeaderProps> = () => {
         <div className="blob blob-1"></div>
         <div className="blob blob-2"></div>
         <div className="blob blob-3"></div>
+        <div className="grid-overlay"></div>
       </div>
 
       <motion.div
@@ -46,6 +45,7 @@ const Header: React.FC<HeaderProps> = () => {
         className="hero-content"
       >
         <motion.div variants={itemVariants} className="hero-badge">
+          <span className="badge-dot"></span>
           <span>Available for new opportunities</span>
         </motion.div>
 
