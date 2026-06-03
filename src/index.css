@@ -5,6 +5,7 @@
   --primary-s: 84%;
   --primary-l: 39%;
   --primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+  --primary-color: var(--primary);
   --primary-glow: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.15);
   --primary-glow-strong: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.3);
 
@@ -12,6 +13,7 @@
   --accent-s: 91%;
   --accent-l: 60%;
   --accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --accent-color: var(--accent);
   
   --font-heading: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -26,6 +28,8 @@
   --radius-md: 16px;
   --radius-lg: 24px;
   --radius-full: 9999px;
+  --border-radius: var(--radius-md);
+  --border-radius-lg: var(--radius-lg);
 
   --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -40,11 +44,16 @@
 
 [data-theme='light'] {
   --bg: hsl(210, 40%, 98%);
+  --bg-color: var(--bg);
   --bg-sec: hsl(210, 40%, 95%);
+  --bg-secondary: var(--bg-sec);
   --text: hsl(215, 25%, 27%);
+  --text-color: var(--text);
   --text-muted: hsl(215, 16%, 47%);
   --heading: hsl(220, 40%, 13%);
+  --heading-color: var(--heading);
   --border: hsla(0, 0%, 0%, 0.06);
+  --border-color: var(--border);
   --border-focus: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.4);
   --card-bg: hsla(0, 0%, 100%, 0.75);
   --glass-bg: hsla(0, 0%, 100%, 0.55);
@@ -54,11 +63,16 @@
 
 [data-theme='dark'] {
   --bg: hsl(222, 47%, 4%);
+  --bg-color: var(--bg);
   --bg-sec: hsl(222, 47%, 8%);
+  --bg-secondary: var(--bg-sec);
   --text: hsl(215, 20%, 65%);
+  --text-color: var(--text);
   --text-muted: hsl(215, 14%, 46%);
   --heading: hsl(210, 40%, 98%);
+  --heading-color: var(--heading);
   --border: hsla(0, 0%, 100%, 0.05);
+  --border-color: var(--border);
   --border-focus: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.4);
   --card-bg: hsla(222, 47%, 8%, 0.7);
   --glass-bg: hsla(222, 47%, 4%, 0.6);
