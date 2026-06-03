@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './About.css';
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <section id="about" className="about-section">
       <div className="container">
@@ -25,8 +25,11 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="about-image-container"
           >
-             <div className="about-image glass">
-                <img src={`${import.meta.env.BASE_URL}Trent.png`} alt="Trent Breneman" className="profile-img" />
+             <div className="about-image-wrapper">
+               <div className="about-image glass">
+                  <img src={`${import.meta.env.BASE_URL}Trent.png`} alt="Trent Breneman" className="profile-img" />
+               </div>
+               <div className="about-image-border"></div>
              </div>
           </motion.div>
 
@@ -54,15 +57,15 @@ const About = () => {
             </p>
             
             <div className="about-stats">
-              <div className="stat-item">
+              <div className="stat-card glass">
                 <span className="stat-number">3+</span>
                 <span className="stat-label">Years Exp.</span>
               </div>
-              <div className="stat-item">
+              <div className="stat-card glass">
                 <span className="stat-number">10+</span>
                 <span className="stat-label">Projects</span>
               </div>
-              <div className="stat-item">
+              <div className="stat-card glass">
                 <span className="stat-number">5+</span>
                 <span className="stat-label">Happy Clients</span>
               </div>
