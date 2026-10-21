@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Send } from 'lucide-react';
+import { Mail, Send, Phone } from 'lucide-react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import './Contact.css';
@@ -45,7 +45,17 @@ const Contact: React.FC = () => {
                 </div>
               </a>
 
-              <a href="https://linkedin.com/in/TrentBreneman" target="_blank" rel="noopener noreferrer" className="contact-method glass">
+              <a href="tel:7044431864" className="contact-method glass">
+                <div className="icon-box">
+                  <Phone size={24} />
+                </div>
+                <div className="method-details">
+                  <span>Phone</span>
+                  <strong>704-443-1864</strong>
+                </div>
+              </a>
+
+              <a href="https://linkedin.com/in/trentbreneman" target="_blank" rel="noopener noreferrer" className="contact-method glass">
                 <div className="icon-box">
                   <FontAwesomeIcon icon={faLinkedin} size="lg" />
                 </div>
@@ -76,8 +86,8 @@ const Contact: React.FC = () => {
           >
             <div className="contact-cta">
                <h3>Quick Contact</h3>
-               <p>The best way to reach me is via email or LinkedIn.</p>
-               <a href="mailto:tbreneman@icloud.com" className="btn btn-primary btn-lg">
+               <p>The best way to reach me is via email, phone, or LinkedIn.</p>
+               <a href="mailto:trentbreneman@icloud.com" className="btn btn-primary btn-lg">
                   <Send size={18} style={{ marginRight: '10px' }} /> Send Message
                </a>
             </div>
