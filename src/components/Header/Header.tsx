@@ -54,7 +54,7 @@ const Header: React.FC<HeaderProps> = () => {
         </motion.h1>
 
         <motion.p variants={itemVariants} className="hero-subtitle">
-          Hi, I'm <span className="highlight">Trent Breneman</span>. A Software Engineer focused on 
+          Hi, I'm <span className="highlight">Trent Breneman</span>. A Software Developer focused on 
           creating high-performance, user-centric applications with modern technologies.
         </motion.p>
 
@@ -64,6 +64,8 @@ const Header: React.FC<HeaderProps> = () => {
           </a>
           <a
             href={`${import.meta.env.BASE_URL}TrentBreneman.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
             download="TrentBreneman.pdf"
             className="btn btn-outline"
           >
