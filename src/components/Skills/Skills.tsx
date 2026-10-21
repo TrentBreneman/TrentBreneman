@@ -7,21 +7,15 @@ import {
   faJs,
   faReact,
   faNodeJs,
-  faPython,
   faGitAlt,
-  faAws,
+  faGithub,
   faDocker,
-  faFigma,
 } from '@fortawesome/free-brands-svg-icons';
 import {
-  faChartSimple,
   faDatabase,
-  faServer,
-  faCodeBranch,
-  faBug,
-  faPuzzlePiece,
+  faCode,
   faBolt,
-  faCogs,
+  faCloud,
   faLayerGroup,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -29,48 +23,53 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 interface Skill {
   name: string;
   icon: any;
-  type: 'frontend' | 'backend' | 'database' | 'tools' | 'soft skills';
 }
 
-const skillsData: Skill[] = [
-  { name: 'HTML5', icon: faHtml5, type: 'frontend' },
-  { name: 'CSS3', icon: faCss3Alt, type: 'frontend' },
-  { name: 'JavaScript', icon: faJs, type: 'frontend' },
-  { name: 'TypeScript', icon: faJs, type: 'frontend' },
-  { name: 'React', icon: faReact, type: 'frontend' },
-  { name: 'Next.js', icon: faReact, type: 'frontend' },
-  { name: 'Tailwind CSS', icon: faCss3Alt, type: 'frontend' },
-  { name: 'Node.js', icon: faNodeJs, type: 'backend' },
-  { name: 'Express.js', icon: faServer, type: 'backend' },
-  { name: 'Python', icon: faPython, type: 'backend' },
-  { name: 'Flask', icon: faPython, type: 'backend' },
-  { name: 'GraphQL', icon: faCodeBranch, type: 'backend' },
-  { name: 'PostgreSQL', icon: faDatabase, type: 'database' },
-  { name: 'MongoDB', icon: faDatabase, type: 'database' },
-  { name: 'SQL', icon: faDatabase, type: 'database' },
-  { name: 'Git', icon: faGitAlt, type: 'tools' },
-  { name: 'GitHub', icon: faCodeBranch, type: 'tools' },
-  { name: 'Docker', icon: faDocker, type: 'tools' },
-  { name: 'AWS', icon: faAws, type: 'tools' },
-  { name: 'CI/CD', icon: faCogs, type: 'tools' },
-  { name: 'Testing (Jest/Vitest)', icon: faBug, type: 'tools' },
-  { name: 'Vite', icon: faBolt, type: 'tools' },
-  { name: 'Jira', icon: faLayerGroup, type: 'tools' },
-  { name: 'Figma', icon: faFigma, type: 'tools' },
-  { name: 'Problem Solving', icon: faPuzzlePiece, type: 'soft skills' },
-  { name: 'Data Visualization', icon: faChartSimple, type: 'soft skills' },
-  { name: 'Debugging', icon: faBug, type: 'soft skills' },
+interface SkillCategory {
+  title: string;
+  skills: Skill[];
+}
+
+const skillsCategories: SkillCategory[] = [
+  {
+    title: 'Languages',
+    skills: [
+      { name: 'JavaScript', icon: faJs },
+      { name: 'TypeScript', icon: faCode },
+      { name: 'SQL', icon: faDatabase },
+      { name: 'HTML', icon: faHtml5 },
+      { name: 'CSS', icon: faCss3Alt },
+    ],
+  },
+  {
+    title: 'Frameworks',
+    skills: [
+      { name: 'React', icon: faReact },
+      { name: 'Next.js', icon: faLayerGroup },
+      { name: 'Node.js', icon: faNodeJs },
+      { name: 'Tailwind CSS', icon: faCss3Alt },
+    ],
+  },
+  {
+    title: 'Databases',
+    skills: [
+      { name: 'PostgreSQL', icon: faDatabase },
+      { name: 'Supabase', icon: faBolt },
+    ],
+  },
+  {
+    title: 'Developer Tools',
+    skills: [
+      { name: 'Git', icon: faGitAlt },
+      { name: 'GitHub', icon: faGithub },
+      { name: 'Docker', icon: faDocker },
+      { name: 'Vite', icon: faBolt },
+      { name: 'Vercel', icon: faCloud },
+    ],
+  },
 ];
 
 const Skills: React.FC = () => {
-  const categorizedSkills = skillsData.reduce(
-    (acc, skill) => {
-      (acc[skill.type] = acc[skill.type] || []).push(skill);
-      return acc;
-    },
-    {} as { [key: string]: Skill[] }
-  );
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -96,25 +95,23 @@ const Skills: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="section-header"
         >
-          <h2 className="section-title">My Technical Arsenal</h2>
+          <h2 className="section-title">Technical Skills</h2>
           <div className="section-divider"></div>
         </motion.div>
 
         <div className="skills-categories">
-          {Object.entries(categorizedSkills).map(([category, skills]) => (
+          {skillsCategories.map((category) => (
             <motion.div
-              key={category}
+              key={category.title}
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
               className="skills-category glass"
             >
-              <h3 className="category-title">
-                {category.charAt(0).toUpperCase() + category.slice(1)}
-              </h3>
+              <h3 className="category-title">{category.title}</h3>
               <div className="skills-grid">
-                {skills.map((skill) => (
+                {category.skills.map((skill) => (
                   <motion.div
                     key={skill.name}
                     variants={itemVariants}
